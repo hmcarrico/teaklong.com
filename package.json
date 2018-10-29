@@ -8,9 +8,13 @@
     "cheerio": "^1.0.0-rc.2",
     "dotenv": "^6.1.0",
     "express": "^4.16.4",
+    "fs": "^0.0.1-security",
     "massive": "^5.5.1",
     "react": "^16.6.0",
+    "react-app-rewire-hot-loader": "^1.0.3",
+    "react-app-rewired": "^1.6.2",
     "react-dom": "^16.6.0",
+    "react-hot-loader": "^4.3.11",
     "react-redux": "^5.1.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.0.5",
@@ -18,9 +22,9 @@
     "request": "^2.88.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
