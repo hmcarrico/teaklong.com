@@ -1,16 +1,66 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
+import {connect} from 'react-redux';
+import {updateUser, updateShow} from '../../ducks/reducer';
+import './Nav.css';
 
 class Nav1 extends Component {
+  constructor(){
+    super();
+    this.state = {
+
+    }
+  }
+
+  componentDidMount(){
+    axios.get('/api/user-data').then(res => {
+      this.props.updateUser(res.data)
+      if(res.data.user){
+        this.props.updateShow(true)
+      } 
+    })
+  }
+
+  login = () => {
+    const redirecturi = encodeURIComponent(window.location.origin + '/auth/callback');
+    const url = `https://${process.env.REACT_APP_AUTH0_DOMAIN}/authorize?client_id=${process.env.REACT_APP_AUTH0_CLIENT_ID}&scope=openid%20profile%20email&redirect_uri=${redirecturi}&response_type=code`
+    window.location = url;
+    
+  }
+
   render() {
+    const {user, show} = this.props;
     return (
-      <div>
+      <div className='tomato'>
+        <nav>
+        {console.log(user)}
+        {console.log(show)}
         <Link to='/'><button>Home</button></Link>
         <Link to='/products'><button>Products</button></Link>
         <Link to='/cart'><button>Cart</button></Link>
+        {show === false ?
+        <button onClick={() => this.login()}>Log in</button>
+        : ' '
+        }
+        {show &&
+        <div className='navProfile'>
+          Welcome, {user.user.profile_name} {'     '}
+          <img src={user.user.picture} />
+        </div>
+        }
+        </nav>
       </div>
     )
   }
 }
 
-export default Nav1;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+    show: state.show
+  }
+}
+
+
+export default connect(mapStateToProps, {updateUser, updateShow})(Nav1);

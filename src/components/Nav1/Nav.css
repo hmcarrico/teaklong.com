@@ -1,0 +1,30 @@
+.navProfile img {
+    max-height: 25px;
+    max-width: 25px;
+    padding-left: 3px;
+}
+
+.navProfile  {
+    float: right;
+    padding-top: 10px;
+    display: flex;
+}
+
+.tomato {
+    height: 50px;
+    width: 100%;
+    background: tomato;
+    display: flex;
+}
+
+.tomato button {
+    height: 33px;
+    width: 80px;
+    margin: 7px 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+nav{
+    width: 100%;
+}
