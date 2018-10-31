@@ -1,0 +1,22 @@
+.prodImg {
+    max-height: 300px;
+    max-width: 300px;
+}
+
+.prod {
+    width: 400px;
+    height: 600px;
+    padding: 20px;
+    text-align: center;
+    margin: 0 auto;
+    background: #262626;
+    border-radius: 12px;
+    border: solid white 10px;
+    color: white;
+}
+
+.felxme {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px;
+}

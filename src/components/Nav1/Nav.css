@@ -13,8 +13,9 @@
 .tomato {
     height: 50px;
     width: 100%;
-    background: tomato;
+    background: #262626;
     display: flex;
+    
 }
 
 .tomato button {
@@ -23,8 +24,10 @@
     margin: 7px 10px;
     border: none;
     border-radius: 5px;
+    
 }
 
 nav{
     width: 100%;
+
 }

@@ -25,9 +25,16 @@ class Nav1 extends Component {
   login = () => {
     const redirecturi = encodeURIComponent(window.location.origin + '/auth/callback');
     const url = `https://${process.env.REACT_APP_AUTH0_DOMAIN}/authorize?client_id=${process.env.REACT_APP_AUTH0_CLIENT_ID}&scope=openid%20profile%20email&redirect_uri=${redirecturi}&response_type=code`
-    window.location = url;
-    
+    window.location = url;  
   }
+
+  logout = () => {
+    axios.post('/api/logout').then(() => {
+      this.props.updateShow(false)
+      this.props.updateUser(null)
+      alert('Logged Out')
+  })
+}
 
   render() {
     const {user, show} = this.props;
@@ -41,7 +48,7 @@ class Nav1 extends Component {
         <Link to='/cart'><button>Cart</button></Link>
         {show === false ?
         <button onClick={() => this.login()}>Log in</button>
-        : ' '
+        : <button onClick={this.logout}>Log Out</button>
         }
         {show &&
         <div className='navProfile'>

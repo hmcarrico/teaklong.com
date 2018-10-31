@@ -29,6 +29,8 @@ module.exports = {
             if (users.length) {
               const user = users[0];
               req.session.user = user;
+              req.session.cart = [];
+              console.log('cart--------->', req.session.cart)
               res.redirect('/');
             } else {
               return req.app.get('db').create_user([
@@ -40,6 +42,7 @@ module.exports = {
                 const newUser = newUsers[0];
                 req.session.user = newUser;
                 res.redirect('/');
+                req.session.cart = ['Hello'];
               }).catch(error => {
                 console.log('error inserting user into database', error);
                 res.status(500).json({ message: 'Error on server, sorry bro' });
