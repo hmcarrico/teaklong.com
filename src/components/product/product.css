@@ -2,3 +2,14 @@
     color: rgb(128, 130, 131);
     cursor: pointer;
 }
+
+.prod-one {
+    width: 300px;
+    /* height: 500px; */
+    padding: 20px;
+    text-align: center;
+    margin: 0 auto;
+    background: #262626;
+    border: solid white 10px;
+    color: white;
+}

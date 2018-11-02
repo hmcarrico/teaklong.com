@@ -25,6 +25,7 @@ massive(process.env.CONNECTION_STRING).then(database => {
 app.get('/api/completes', productController.getCompletes);
 app.get('/api/decks', productController.getDecks);
 app.get('/api/wheels', productController.getWheels);
+app.get('/api/all', productController.getAll)
 
 //auth endpoints
 app.get('/auth/callback', authController.login);

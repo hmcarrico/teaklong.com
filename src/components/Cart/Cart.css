@@ -1,0 +1,18 @@
+.cart-title {
+text-align: center;
+}
+
+.info {
+    text-align: center;
+}
+
+.prod-cart {
+    width: 300px;
+    /* height: 440px; */
+    padding: 20px;
+    text-align: center;
+    margin: 0 auto;
+    background: #262626;
+    border: solid white 10px;
+    color: white;
+}

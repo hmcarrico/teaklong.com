@@ -17,4 +17,10 @@ module.exports = {
             res.status(200).json(wheels)
         })
     },
+    getAll: (req, res) => {
+        const db = req.app.get('db');
+        db.get_all().then(completes => {
+            res.status(200).json(completes)
+        })
+    }
 }

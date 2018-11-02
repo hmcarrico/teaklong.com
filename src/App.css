@@ -1,5 +1,5 @@
 .app {
-  background: #C5A479
+  /* background: #C5A479 */
 }
 
 .titlee {
@@ -9,4 +9,5 @@
 
 .prod:hover {
   cursor: pointer;
+  transform: scale(1.5);
 }

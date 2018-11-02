@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
+import './Cart.css'
 
 
 class Cart extends Component {
@@ -45,28 +46,28 @@ class Cart extends Component {
     
     return (
       <div>
-        Cart
+        <h1 className='cart-title'>Cart</h1>
         {console.log(this.state.cart)}
         { this.state.cart.length !== 0 || this.props.show === true
         ?
           this.state.cart.map(item => {
-          return <div className='prod'>
+          return <div className='prod-cart'>
             {console.log(item)}
             <h5>{item.name}</h5>
             <p>${item.price}</p>
             <img className='prodImg' src={item.img} />
-            <p>{item.description}</p>
+            {/* <p>{item.description}</p> */}
             <button onClick={() => this.deleteItem(item.id, item.price)}>Delete From Cart</button>
           </div>
         })
         :<div> 
-        Nothing in cart
+        <p className='info'>Nothing in cart</p>
        </div>
         }
 
         { this.props.show === false
         ? <div>
-        Please login in to add items to your cart
+        <p className='info'>Please login in to add items to your cart</p>
         </div>
         : <div>
           
@@ -75,7 +76,7 @@ class Cart extends Component {
         {
           this.props.show
           ? <div>
-            <p>Total = {this.state.count}</p>
+            <p className='info'>Total = {this.state.count}</p>
           </div>
           : ''
         }

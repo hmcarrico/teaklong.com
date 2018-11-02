@@ -5,12 +5,12 @@
 
 .prod {
     width: 400px;
-    height: 600px;
+    /* height: 450px; */
     padding: 20px;
     text-align: center;
     margin: 0 auto;
     background: #262626;
-    border-radius: 12px;
+    /* border-radius: 30px; */
     border: solid white 10px;
     color: white;
 }
@@ -19,4 +19,5 @@
     display: flex;
     flex-wrap: wrap;
     padding: 15px;
+    justify-content: center;
 }

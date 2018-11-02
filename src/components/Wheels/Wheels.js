@@ -32,19 +32,20 @@ import {setProduct} from '../../ducks/reducer'
     } 
   }
 
-  changePage = (obj) => {
+  changePage = (obj, id) => {
     this.props.setProduct(obj)
-    this.props.history.push(`/products/complete/item`)
+    this.props.history.push(`/products/complete/item/${id}`)
   }
 
   render() {
     const wheels = this.state.wheels.map(wheel => {
-      return <div className='prod'>
-        <h5 className='titleHov' onClick={() => this.changePage({name: wheel.name, price: wheel.price, img: wheel.img, description: wheel.description,  type: wheel.type})}>{wheel.name}</h5>
-        <p>${wheel.price}</p>
+      return <div className='prod' onClick={() => this.changePage({name: wheel.name, price: wheel.price, img: wheel.img, description: wheel.description,  type: wheel.type}, wheel.id)}>
+        <h5 >{wheel.name}</h5>
         <img alt='picture of wheel' className='prodImg' src={wheel.img} />
-        <p>{wheel.description}</p>
-        <button onClick={() => this.addToCart(wheel.name, wheel.price, wheel.img, wheel.description, wheel.id)}>Add to Cart</button>
+        <p>${wheel.price}</p>
+        {/* <p>{wheel.description}</p> */}
+        {/* <button onClick={() => this.addToCart(wheel.name, wheel.price, wheel.img, wheel.description, wheel.id)}>Add to Cart</button> */}
+        {/* <button className='titleHov' onClick={() => this.changePage({name: wheel.name, price: wheel.price, img: wheel.img, description: wheel.description,  type: wheel.type}, wheel.id)}>Details</button> */}
       </div>
     })
     return (

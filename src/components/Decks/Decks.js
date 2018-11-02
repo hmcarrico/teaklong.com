@@ -32,19 +32,20 @@ class Decks extends Component {
       } 
     }
 
-    changePage = (obj) => {
+    changePage = (obj, id) => {
       this.props.setProduct(obj)
-      this.props.history.push(`/products/complete/item`)
+      this.props.history.push(`/products/complete/item/${id}`)
     }
 
   render() {
     const decks = this.state.decks.map(deck => {
-      return <div className='prod'>
-        <h5 className='titleHov' onClick={() => this.changePage({name: deck.name, price: deck.price, img: deck.img, description: deck.description,  type: deck.type})}>{deck.name}</h5>
-        <p>${deck.price}</p>
+      return <div className='prod' onClick={() => this.changePage({name: deck.name, price: deck.price, img: deck.img, description: deck.description,  type: deck.type}, deck.id)}>
+        <h5 className='titleHov' >{deck.name}</h5>
         <img alt='picture of skateboard deck' className='prodImg' src={deck.img} />
-        <p>{deck.description}</p>
-        <button onClick={() => this.addToCart(deck.name, deck.price, deck.img, deck.description, deck.id)}>Add to Cart</button>
+        <p>${deck.price}</p>
+        {/* <p>{deck.description}</p> */}
+        {/* <button onClick={() => this.changePage({name: deck.name, price: deck.price, img: deck.img, description: deck.description,  type: deck.type}, deck.id)}>Details</button> */}
+        {/* <button onClick={() => this.addToCart(deck.name, deck.price, deck.img, deck.description, deck.id)}>Add to Cart</button> */}
       </div>
     })
     return (

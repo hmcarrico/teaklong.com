@@ -1,0 +1,1 @@
+select * from long_products;

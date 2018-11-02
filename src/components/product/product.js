@@ -13,13 +13,13 @@ class Product extends Component {
   render() {
     return (
       <div className='felxme'>
-        <div className='prod'>
+        <div className='prod-one'>
+          <button className='left' onClick={() => this.props.history.push(`/products/${this.props.product.type}s`)}>Back</button> <br />
           Name: {this.props.product.name} <br />
           Price: {this.props.product.price} <br />
           <img className='prodImg' src={this.props.product.img} /> <br />
           Description: {this.props.product.description} <br />
           <button onClick={() => this.addToCart(this.props.product.name, this.props.product.price, this.props.product.img, this.props.product.description)}>Add to Cart</button>
-          <button onClick={() => this.props.history.push(`/products/${this.props.product.type}s`)}>Back</button>
         </div>
       </div>
     )

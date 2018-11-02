@@ -33,19 +33,20 @@ class Completes extends Component {
       } 
     }
 
-    changePage = (obj) => {
+    changePage = (obj, id) => {
       this.props.setProduct(obj)
-      this.props.history.push(`/products/complete/item`)
+      this.props.history.push(`/products/complete/item/${id}`)
     }
 
   render() {
     let completes = this.state.completes.map(board => {
-      return <div className='prod'>
-        <h5 className='titleHov' onClick={() => this.changePage({name: board.name, price: board.price, img: board.img, description: board.description, type: board.type})}>{board.name}</h5>
-        <p>${board.price}</p>
+      return <div className='prod' onClick={() => this.changePage({name: board.name, price: board.price, img: board.img, description: board.description, type: board.type}, board.id)}>
+        <h5>{board.name}</h5>
         <img alt='picture of a longboard' className='prodImg' src={board.img} />
-        <p>{board.description}</p>
-        <button onClick={() => this.addToCart(board.name, board.price, board.img, board.description, board.id)}>Add to Cart</button>
+        <p>${board.price}</p>
+        {/* <p>{board.description}</p> */}
+        {/* <button onClick={() => this.addToCart(board.name, board.price, board.img, board.description, board.id)}>Add to Cart</button> */}
+        {/* <button className='titleHov' onClick={() => this.changePage({name: board.name, price: board.price, img: board.img, description: board.description, type: board.type}, board.id)}>Details</button> */}
       </div>
     })
     return (

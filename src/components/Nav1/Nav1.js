@@ -48,11 +48,12 @@ class Nav1 extends Component {
         <Link to='/cart'><button>Cart</button></Link>
         {show === false ?
         <button onClick={() => this.login()}>Log in</button>
-        : <button onClick={this.logout}>Log Out</button>
+        : ''
+        // <button onClick={this.logout}>Log Out</button>
         }
         {show &&
         <div className='navProfile'>
-          Welcome, {user.user.profile_name} {'     '}
+          {/* Welcome, {user.user.profile_name} {'     '} */}
           <img src={user.user.picture} />
         </div>
         }
