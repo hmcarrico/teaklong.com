@@ -21,9 +21,15 @@ import {setProduct} from '../../ducks/reducer'
   }
 
   addToCart = (name, price, img, description, id) => {
+    console.log(this.props.user)
+    console.log(this.props.show)
+    { this.props.show === true
+      ?
     axios.post('/session/cart', {name: name, price: price, img: img, description: description, id: id}).then(cart => {
       console.log('added to cart', cart)
     })
+    : alert('please log in to add to cart')
+    } 
   }
 
   changePage = (obj) => {
@@ -34,9 +40,9 @@ import {setProduct} from '../../ducks/reducer'
   render() {
     const wheels = this.state.wheels.map(wheel => {
       return <div className='prod'>
-        <h5 className='titleHov' onClick={() => this.changePage({name: wheel.name, price: wheel.price, img: wheel.img, description: wheel.description})}>{wheel.name}</h5>
+        <h5 className='titleHov' onClick={() => this.changePage({name: wheel.name, price: wheel.price, img: wheel.img, description: wheel.description,  type: wheel.type})}>{wheel.name}</h5>
         <p>${wheel.price}</p>
-        <img alt='https://via.placeholder.com/300' className='prodImg' src={wheel.img} />
+        <img alt='picture of wheel' className='prodImg' src={wheel.img} />
         <p>{wheel.description}</p>
         <button onClick={() => this.addToCart(wheel.name, wheel.price, wheel.img, wheel.description, wheel.id)}>Add to Cart</button>
       </div>
@@ -53,4 +59,11 @@ import {setProduct} from '../../ducks/reducer'
   }
 }
 
-export default connect(null, {setProduct})(Wheels)
+const mapStateToProps = (state) => {
+  return {
+    user : state.user,
+    show : state.show
+  }
+}
+
+export default connect(mapStateToProps, {setProduct})(Wheels)

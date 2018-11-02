@@ -21,9 +21,15 @@ class Decks extends Component {
     }
 
     addToCart = (name, price, img, description, id) => {
+      console.log(this.props.user)
+      console.log(this.props.show)
+      { this.props.show === true
+        ?
       axios.post('/session/cart', {name: name, price: price, img: img, description: description, id: id}).then(cart => {
         console.log('added to cart', cart)
       })
+      : alert('please log in to add to cart')
+      } 
     }
 
     changePage = (obj) => {
@@ -34,9 +40,9 @@ class Decks extends Component {
   render() {
     const decks = this.state.decks.map(deck => {
       return <div className='prod'>
-        <h5 className='titleHov' onClick={() => this.changePage({name: deck.name, price: deck.price, img: deck.img, description: deck.description})}>{deck.name}</h5>
+        <h5 className='titleHov' onClick={() => this.changePage({name: deck.name, price: deck.price, img: deck.img, description: deck.description,  type: deck.type})}>{deck.name}</h5>
         <p>${deck.price}</p>
-        <img alt='https://via.placeholder.com/300' className='prodImg' src={deck.img} />
+        <img alt='picture of skateboard deck' className='prodImg' src={deck.img} />
         <p>{deck.description}</p>
         <button onClick={() => this.addToCart(deck.name, deck.price, deck.img, deck.description, deck.id)}>Add to Cart</button>
       </div>
@@ -53,4 +59,11 @@ class Decks extends Component {
   }
 }
 
-export default connect(null, {setProduct})(Decks);
+const mapStateToProps = (state) => {
+  return {
+    user : state.user,
+    show : state.show
+  }
+}
+
+export default connect(mapStateToProps, {setProduct})(Decks);

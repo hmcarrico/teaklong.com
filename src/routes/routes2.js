@@ -9,5 +9,5 @@ export default <Switch>
     <Route exact path='/products/completes' component={Completes} />
     <Route path='/products/decks' component={Decks} />
     <Route path='/products/wheels' component={Wheels} />
-    <Route path='/products/complete/item' component={Product} />
+    <Route path='/products/complete/item/:id' component={Product} />
 </Switch>

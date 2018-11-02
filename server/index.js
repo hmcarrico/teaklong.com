@@ -4,10 +4,12 @@ const massive = require('massive');
 const session = require('express-session');
 const authController = require('./authController'); 
 const productController = require('./productController'); 
+const path = require('path')
 require('dotenv').config();
 
 const app = express();
 app.use(bodyParser.json());
+app.use( express.static( `${__dirname}/../build` ) );
 app.use(session({
     secret: process.env.SESSION_SECRET,
     saveUninitialized: false,
@@ -57,6 +59,11 @@ app.delete('/session/cart/:id', (req, res) => {
             res.json(req.session.cart)
         }
 })
+
+//Zeit Host
+app.get('*', (req, res)=>{
+    res.sendFile(path.join(__dirname, '../build/index.html'));
+  })
 
 const port = process.env.SERVER_PORT || 4444;
 app.listen(port, () => {

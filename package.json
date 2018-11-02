@@ -12,6 +12,7 @@
     "fs": "^0.0.1-security",
     "http-proxy-middleware": "^0.19.0",
     "massive": "^5.5.1",
+    "path": "^0.12.7",
     "react": "^16.6.0",
     "react-app-rewire-hot-loader": "^1.0.3",
     "react-app-rewired": "^1.6.2",
@@ -27,8 +28,14 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "now-start": "node server/index.js",
+    "deploy": "now --public --dotenv=.env.prod -d"
   },
+  "now":{
+    "alias":"teaklongboarding"
+  },
+  "proxy": "http://localhost:4444",
   "eslintConfig": {
     "extends": "react-app"
   },

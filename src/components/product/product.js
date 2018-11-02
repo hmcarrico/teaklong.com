@@ -19,6 +19,7 @@ class Product extends Component {
           <img className='prodImg' src={this.props.product.img} /> <br />
           Description: {this.props.product.description} <br />
           <button onClick={() => this.addToCart(this.props.product.name, this.props.product.price, this.props.product.img, this.props.product.description)}>Add to Cart</button>
+          <button onClick={() => this.props.history.push(`/products/${this.props.product.type}s`)}>Back</button>
         </div>
       </div>
     )

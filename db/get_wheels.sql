@@ -1,1 +1,1 @@
-select * from long_products where type='wheels';
+select * from long_products where type='wheel';
