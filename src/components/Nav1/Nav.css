@@ -24,7 +24,13 @@
     margin: 7px 10px;
     border: none;
     border-radius: 5px;
+    background: none;
+    color: rgb(230, 95, 93);
     
+}
+
+.tomato button:hover {
+    color: white;
 }
 
 nav{

@@ -14,10 +14,10 @@ class Home extends Component {
     return (
       <div className='backk'>
       {/* <ReactPlayer muted loop url='https://www.youtube.com/watch?v=ysz5S6PUM-U' playing /> */}
-        <h4 className='teak'>
+        <p className='teak'>
         Teak 
         Long
-        Boards</h4>
+        Boards</p>
       </div>
     )
   }

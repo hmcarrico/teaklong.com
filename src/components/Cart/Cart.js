@@ -57,6 +57,7 @@ class Cart extends Component {
             <p>${item.price}</p>
             <img className='prodImg' src={item.img} />
             {/* <p>{item.description}</p> */}
+            {console.log(item.id)}
             <button onClick={() => this.deleteItem(item.id, item.price)}>Delete From Cart</button>
           </div>
         })

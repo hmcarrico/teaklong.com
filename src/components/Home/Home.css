@@ -1,10 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Righteous');
+
+* {
+    font-family: 'Righteous', cursive;
+}
+
 .teak {
     font-size: 100px;
     text-align: center;
+    margin: none;
+    border: none;
+    background: #ffffffd5;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    /* font-family: 'Righteous', cursive; */
 }
 
 .backk {
-    /* background-color: #C5A479; */
-    padding-bottom: none;
+    /* border-bottom: .1px black solid; */
+    border-top: .1px black solid;
     width: 100%;
+    height: 100vh;
+    background-image: url('https://us.123rf.com/450wm/krugli/krugli1608/krugli160800073/61420963-sea-surfing-pattern-with-different-type-surf-desks-surfboard-seamless-background-in-retro-colors-sum.jpg?ver=6');
+    /* position: fixed; */
 }
