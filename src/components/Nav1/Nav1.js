@@ -44,7 +44,7 @@ class Nav1 extends Component {
         {console.log(user)}
         {console.log(show)}
         <Link to='/'><button>Home</button></Link>
-        <Link to='/products/completes'><button>Products</button></Link>
+        <Link to='/products/all'><button>Products</button></Link>
         <Link to='/cart'><button>Cart</button></Link>
         {show === false ?
         <button onClick={() => this.login()}>Log in</button>

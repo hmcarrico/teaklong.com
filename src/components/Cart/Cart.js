@@ -77,7 +77,7 @@ class Cart extends Component {
         {
           this.props.show
           ? <div>
-            <p className='info'>Total = {this.state.count}</p>
+            <p className='info'>Total {this.state.count}</p>
           </div>
           : ''
         }
