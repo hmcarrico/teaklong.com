@@ -40,7 +40,7 @@ class Decks extends Component {
   render() {
     const decks = this.state.decks.map(deck => {
       return <div className='prod' onClick={() => this.changePage({name: deck.name, price: deck.price, img: deck.img, description: deck.description,  type: deck.type, id: deck.id},deck.id, deck.type)}>
-        <h5 className='titleHov' >{deck.name}</h5>
+        <h3 className='titleHov' >{deck.name}</h3>
         <img alt='picture of skateboard deck' className='prodImg' src={deck.img} />
         <p>${deck.price}</p>
         {/* <p>{deck.description}</p> */}

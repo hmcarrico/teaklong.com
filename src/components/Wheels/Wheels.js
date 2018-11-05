@@ -40,7 +40,7 @@ import {setProduct} from '../../ducks/reducer'
   render() {
     const wheels = this.state.wheels.map(wheel => {
       return <div className='prod' onClick={() => this.changePage({name: wheel.name, price: wheel.price, img: wheel.img, description: wheel.description,  type: wheel.type, id: wheel.id}, wheel.id, wheel.type)}>
-        <h5 >{wheel.name}</h5>
+        <h3 >{wheel.name}</h3>
         <img alt='picture of wheel' className='prodImg' src={wheel.img} />
         <p>${wheel.price}</p>
         {console.log(wheel.id)}

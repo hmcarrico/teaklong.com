@@ -14,3 +14,10 @@
     color: white;
     padding-bottom: 40px;
 }
+
+.desc{
+    color: black;
+    background: rgb(151, 149, 149);
+    border: solid 2px rgb(0, 0, 0);
+    padding: 5px;
+}

@@ -8,7 +8,7 @@ class Product extends Component {
     super()
     this.state = {
        items: [],
-       price: 0
+       price: ''
     }
   }
 
@@ -48,6 +48,9 @@ class Product extends Component {
     axios.put(`/api/edit/${id}`, {price}).then(res => {
       alert('Price Edited')
       {this.getProduct()}
+      this.setState({
+        price: ''
+      })
     })
   }
 
@@ -58,10 +61,10 @@ class Product extends Component {
         {this.state.items.map(item => {
           return <div>
           <button className='left' onClick={() => this.props.history.push(`/products/${item.type}s`)}>Back</button> <br />
-          Name: {item.name} <br />
-          Price: {item.price} <br />
+          <h1>{item.name}</h1> <br />
+          <b>Price:</b> {item.price} <br />
           <img className='prodImg' src={item.img} /> <br />
-          Description: {item.description} <br />
+          <p className='desc'><b>Description:</b> {item.description} </p> <br />
           {console.log(item.id)}
           <button onClick={() => this.addToCart(item.name, item.price, item.img, item.description, item.id)}>Add to Cart</button>
           {
@@ -69,7 +72,7 @@ class Product extends Component {
             this.props.user.user.admin === true
             ?
             <div>
-            <p><input name='price' onChange={(e) => this.handleChangeInput(e)}/><button onClick={() => this.editPrice(this.state.price, item.id)}>Edit Price</button></p>
+            <p><input name='price' value={this.state.price} onChange={(e) => this.handleChangeInput(e)}/><button onClick={() => this.editPrice(this.state.price, item.id)}>Edit Price</button></p>
             <button onClick={() => this.deleteItem(item.id)}>Delete Item</button>
             </div>
             :

@@ -41,7 +41,7 @@ class Completes extends Component {
   render() {
     let completes = this.state.completes.map(board => {
       return <div className='prod' onClick={() => this.changePage({name: board.name, price: board.price, img: board.img, description: board.description, type: board.type, id: board.id}, board.id, board.type)}>
-        <h5>{board.name}</h5>
+        <h3>{board.name}</h3>
         <img alt='picture of a longboard' className='prodImg' src={board.img} />
         <p>${board.price}</p>
         {/* <p>{board.description}</p> */}

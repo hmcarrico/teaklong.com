@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
+// import Checkout from '../Checkout/Checkout';
 import './Cart.css'
 
 
@@ -77,10 +78,15 @@ class Cart extends Component {
         {
           this.props.show
           ? <div>
-            <p className='info'>Total {this.state.count}</p>
+            <p className='info'>Total ${this.state.count}</p>
           </div>
           : ''
         }
+        {/* <Checkout
+            name={'The Road to learn React'}
+            description={'Only the Book'}
+            amount={1}
+          /> */}
       </div>
     )
   }
