@@ -32,14 +32,14 @@ class Decks extends Component {
       } 
     }
 
-    changePage = (obj, id) => {
+    changePage = (obj, id, type) => {
       this.props.setProduct(obj)
-      this.props.history.push(`/products/complete/item/${id}`)
+      this.props.history.push(`/products/${type}/item/${id}`)
     }
 
   render() {
     const decks = this.state.decks.map(deck => {
-      return <div className='prod' onClick={() => this.changePage({name: deck.name, price: deck.price, img: deck.img, description: deck.description,  type: deck.type, id: deck.id},deck.id)}>
+      return <div className='prod' onClick={() => this.changePage({name: deck.name, price: deck.price, img: deck.img, description: deck.description,  type: deck.type, id: deck.id},deck.id, deck.type)}>
         <h5 className='titleHov' >{deck.name}</h5>
         <img alt='picture of skateboard deck' className='prodImg' src={deck.img} />
         <p>${deck.price}</p>

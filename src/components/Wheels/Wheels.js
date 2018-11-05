@@ -32,14 +32,14 @@ import {setProduct} from '../../ducks/reducer'
     } 
   }
 
-  changePage = (obj, id) => {
+  changePage = (obj, id, type) => {
     this.props.setProduct(obj)
-    this.props.history.push(`/products/complete/item/${id}`)
+    this.props.history.push(`/products/${type}/item/${id}`)
   }
 
   render() {
     const wheels = this.state.wheels.map(wheel => {
-      return <div className='prod' onClick={() => this.changePage({name: wheel.name, price: wheel.price, img: wheel.img, description: wheel.description,  type: wheel.type, id: wheel.id}, wheel.id)}>
+      return <div className='prod' onClick={() => this.changePage({name: wheel.name, price: wheel.price, img: wheel.img, description: wheel.description,  type: wheel.type, id: wheel.id}, wheel.id, wheel.type)}>
         <h5 >{wheel.name}</h5>
         <img alt='picture of wheel' className='prodImg' src={wheel.img} />
         <p>${wheel.price}</p>

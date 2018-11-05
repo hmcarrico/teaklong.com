@@ -5,7 +5,8 @@ create table users (
   auth0_id varchar not null,
   email varchar not null,
   profile_name text not null,
-  picture text not null
+  picture text not null,
+  admin boolean default false
 );
 
 create table if not exists long_products(

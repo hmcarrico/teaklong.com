@@ -33,14 +33,14 @@ class Completes extends Component {
       } 
     }
 
-    changePage = (obj, id) => {
+    changePage = (obj, id, type) => {
       this.props.setProduct(obj)
-      this.props.history.push(`/products/complete/item/${id}`)
+      this.props.history.push(`/products/${type}/item/${id}`)
     }
 
   render() {
     let completes = this.state.completes.map(board => {
-      return <div className='prod' onClick={() => this.changePage({name: board.name, price: board.price, img: board.img, description: board.description, type: board.type, id: board.id} )}>
+      return <div className='prod' onClick={() => this.changePage({name: board.name, price: board.price, img: board.img, description: board.description, type: board.type, id: board.id}, board.id, board.type )}>
         <h5>{board.name}</h5>
         <img alt='picture of a longboard' className='prodImg' src={board.img} />
         <p>${board.price}</p>

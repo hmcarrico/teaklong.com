@@ -12,6 +12,7 @@
     "fs": "^0.0.1-security",
     "http-proxy-middleware": "^0.19.0",
     "massive": "^5.5.1",
+    "nodemailer": "^4.6.8",
     "path": "^0.12.7",
     "react": "^16.6.0",
     "react-app-rewire-hot-loader": "^1.0.3",

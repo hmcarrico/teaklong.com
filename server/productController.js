@@ -22,5 +22,12 @@ module.exports = {
         db.get_all().then(completes => {
             res.status(200).json(completes)
         })
+    },
+    getOne: (req, res) => {
+        const db = req.app.get('db');
+        let {id} = req.params;
+        db.get_product(id).then(item => {
+            res.status(200).json(item)
+        })
     }
 }

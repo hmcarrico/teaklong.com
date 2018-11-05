@@ -4,6 +4,21 @@ import axios from 'axios';
 import './product.css'
 
 class Product extends Component {
+  constructor(props) {
+    super()
+    this.state = {
+       items: []
+    }
+  }
+
+  componentDidMount(){
+    axios.get(`/api/one/${this.props.match.params.id}`).then(res => {
+      this.setState({
+        items: res.data
+      })
+    })
+  }
+  
   addToCart = (name, price, img, description, id) => {
     console.log('product id for cart---->', id)
     axios.post('/session/cart', {name: name, price: price, img: img, description: description, id: id}).then(cart => {
@@ -15,13 +30,19 @@ class Product extends Component {
     return (
       <div className='felxme'>
         <div className='prod-one'>
-          <button className='left' onClick={() => this.props.history.push(`/products/${this.props.product.type}s`)}>Back</button> <br />
-          Name: {this.props.product.name} <br />
-          Price: {this.props.product.price} <br />
-          <img className='prodImg' src={this.props.product.img} /> <br />
-          Description: {this.props.product.description} <br />
-          {console.log(this.props.product.id)}
-          <button onClick={() => this.addToCart(this.props.product.name, this.props.product.price, this.props.product.img, this.props.product.description, this.props.product.id)}>Add to Cart</button>
+        {this.state.items.map(item => {
+          return <div>
+          <button className='left' onClick={() => this.props.history.push(`/products/${item.type}s`)}>Back</button> <br />
+          Name: {item.name} <br />
+          Price: {item.price} <br />
+          <img className='prodImg' src={item.img} /> <br />
+          Description: {item.description} <br />
+          {console.log(item.id)}
+          <button onClick={() => this.addToCart(item.name, item.price, item.img, item.description, item.id)}>Add to Cart</button>
+          </div>
+        })
+        }
+        {console.log(this.state.items)}
         </div>
       </div>
     )

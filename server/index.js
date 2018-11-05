@@ -3,7 +3,8 @@ const bodyParser = require('body-parser');
 const massive = require('massive');
 const session = require('express-session');
 const authController = require('./authController'); 
-const productController = require('./productController'); 
+const productController = require('./productController');
+const adminController = require('./adminController');
 const path = require('path')
 require('dotenv').config();
 
@@ -25,7 +26,11 @@ massive(process.env.CONNECTION_STRING).then(database => {
 app.get('/api/completes', productController.getCompletes);
 app.get('/api/decks', productController.getDecks);
 app.get('/api/wheels', productController.getWheels);
-app.get('/api/all', productController.getAll)
+app.get('/api/all', productController.getAll);
+app.get('/api/one/:id', productController.getOne);
+
+//Admin Products
+app.post('/api/add', adminController.addProduct);
 
 //auth endpoints
 app.get('/auth/callback', authController.login);
