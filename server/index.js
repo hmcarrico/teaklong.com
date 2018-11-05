@@ -31,6 +31,8 @@ app.get('/api/one/:id', productController.getOne);
 
 //Admin Products
 app.post('/api/add', adminController.addProduct);
+app.delete('/api/delete/:id', adminController.deleteProduct);
+app.put(`/api/edit/:id`, adminController.editProduct);
 
 //auth endpoints
 app.get('/auth/callback', authController.login);

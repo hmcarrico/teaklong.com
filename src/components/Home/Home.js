@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import Footer from '../Footer/Footer';
 import './Home.css'
-import ReactPlayer from 'react-player'
 
 class Home extends Component {
     constructor(){
@@ -18,6 +18,7 @@ class Home extends Component {
         Teak 
         Long
         Boards</p>
+        <Footer className='foot' />
       </div>
     )
   }

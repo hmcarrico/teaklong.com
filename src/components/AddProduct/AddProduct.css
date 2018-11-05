@@ -1,0 +1,37 @@
+.addList {
+    margin: 0 auto;
+    padding: 20px;
+    background: #262626;
+    color: white;
+    width: 75%;
+    /* border: solid 5px rgb(230, 95, 93); */
+}
+
+.addTitle {
+    margin: 0;
+    font-size: 40px;
+}
+
+
+.addList input{
+   border: solid rgb(230, 95, 93) 2px;
+}
+
+.addList button{
+   color: white;
+   background: none;
+   border: none;
+}
+
+.addList button:hover{
+   color: rgb(230, 95, 93);
+}
+
+select {
+    border: solid 2px rgb(230, 95, 93);
+    background: white;
+}
+
+.full {
+    height: 86vh;
+}
