@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
-// import Checkout from '../Checkout/Checkout';
+import StripeCheckout from 'react-stripe-checkout';
 import './Cart.css'
+import Checkout from '../Checkout/Checkout'
 
 
 class Cart extends Component {
@@ -43,6 +44,19 @@ class Cart extends Component {
       })
     }
 
+    onToken = (token) => {
+      console.log('token', token)
+      axios.post('/api/stripe', {
+       method: 'POST',
+       body: token.id,
+       amount:this.state.count*100
+      })
+       .then(response => {
+          console.log(response)
+          alert(`We are in business`);
+      })
+    };
+
   render() {
     
     return (
@@ -82,11 +96,14 @@ class Cart extends Component {
           </div>
           : ''
         }
-        {/* <Checkout
-            name={'The Road to learn React'}
-            description={'Only the Book'}
-            amount={1}
-          /> */}
+        <div>
+       <StripeCheckout
+        token={this.onToken}
+        stripeKey="pk_test_rGBc29KX9tUGcuNiWorM9GuZ"
+        amount={this.state.count*100}
+      />
+      {/* <Checkout /> */}
+      </div>
       </div>
     )
   }

@@ -5,7 +5,8 @@ const session = require('express-session');
 const authController = require('./authController'); 
 const productController = require('./productController');
 const adminController = require('./adminController');
-const path = require('path')
+const path = require('path');
+const stripe = require("stripe")("sk_test_48bsYBhFSRnBOUFnGUpFwpKk");
 require('dotenv').config();
 
 const app = express();
@@ -16,6 +17,36 @@ app.use(session({
     saveUninitialized: false,
     resave: false,
   }));
+
+app.post("/api/stripe", (req, res) => {
+    console.log('req.body-->', req.body.body)
+    console.log('req.body-->', req.body)
+    const stripeToken = req.body.body; // Using Express
+    console.log('stripeToken', stripeToken)
+    stripe.charges.create({
+        amount: req.body.amount,
+        currency: 'usd',
+        description: 'Order Id',
+        source: stripeToken,
+      }, function(err, charge) {
+          console.log('charge', charge)
+          if(err){
+            res.send({
+                success: false,
+                message: 'Errorr'
+            })
+          } else {
+            res.send({
+            success: true,
+            message: 'Success'
+         })
+          }
+      });
+
+  });
+
+
+
 
 massive(process.env.CONNECTION_STRING).then(database => {
     app.set('db', database)

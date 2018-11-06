@@ -1,42 +1,82 @@
-import React from 'react'
+import React from 'react';
 import axios from 'axios';
-import StripeCheckout from 'react-stripe-checkout';
 
-import STRIPE_PUBLISHABLE from './constants/stripe';
-import PAYMENT_SERVER_URL from './constants/server';
+export default class Cards extends React.Component {
+  constructor(props) {
+      super(props);
+      this.state = {
+          loading: true,
+          stripeLoading: true,
+      };
+      // onStripeUpdate must be bound or else clicking on button will produce error.
+      this.onStripeUpdate = this.onStripeUpdate.bind(this);
+      // binding loadStripe as a best practice, not doing so does not seem to cause error.
+      this.loadStripe = this.loadStripe.bind(this);
+  }
 
-const CURRENCY = 'EUR';
+  loadStripe(onload) {
+      if(! window.StripeCheckout) {
+          const script = document.createElement('script');
+          script.onload = function () {
+              console.info("Stripe script loaded");
+              onload();
+          };
+          script.src = 'https://checkout.stripe.com/checkout.js';
+          document.head.appendChild(script);
+      } else {
+          onload();
+      }
+  }
 
-const fromEuroToCent = amount => amount * 100;
+  componentDidMount() {
 
-const successPayment = data => {
-  alert('Payment Successful');
-};
+      this.loadStripe(() => {
+          this.stripeHandler = window.StripeCheckout.configure({
+              key: 'pk_test_rGBc29KX9tUGcuNiWorM9GuZ',
+              image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+              locale: 'auto',
+              token: (token) => {
+                  this.setState({ loading: true });
+                  // use fetch or some other AJAX library here if you dont want to use axios
+                  axios.post('/your-server-side-code', {
+                      stripeToken: token.id,
+                  });
+              }
+          });
 
-const errorPayment = data => {
-  alert('Payment Error');
-};
+          this.setState({
+              stripeLoading: false,
+              // loading needs to be explicitly set false so component will render in 'loaded' state.
+              loading: false,
+          });
+      });
+  }
 
-const onToken = (amount, description) => token =>
-  axios.post(PAYMENT_SERVER_URL,
-    {
-      description,
-      source: token.id,
-      currency: CURRENCY,
-      amount: fromEuroToCent(amount)
-    })
-    .then(successPayment)
-    .catch(errorPayment);
+  componentWillUnmount() {
+      if(this.stripeHandler) {
+          this.stripeHandler.close();
+      }
+  }
 
-const Checkout = ({ name, description, amount }) => {
-  <StripeCheckout
-    name={name}
-    description={description}
-    amount={fromEuroToCent(amount)}
-    token={onToken(amount, description)}
-    currency={CURRENCY}
-    stripeKey={STRIPE_PUBLISHABLE}
-  />
+  onStripeUpdate(e) {
+      this.stripeHandler.open({
+          name: 'test',
+          description: 'widget',
+          panelLabel: 'Update Credit Card',
+          allowRememberMe: false,
+      });
+      e.preventDefault();
+  }
+
+  render() {
+      const { stripeLoading, loading } = this.state;
+      return (
+          <div>
+              {(loading || stripeLoading)
+                  ? <p>loading..</p>
+                  : <button onClick={this.onStripeUpdate}>Add CC</button>
+              }
+          </div>
+      );
+  }
 }
-
-export default Checkout;
