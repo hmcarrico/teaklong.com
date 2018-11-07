@@ -3,7 +3,6 @@ import axios from 'axios';
 import {connect} from 'react-redux';
 import StripeCheckout from 'react-stripe-checkout';
 import './Cart.css'
-import Checkout from '../Checkout/Checkout'
 
 
 class Cart extends Component {
@@ -36,7 +35,7 @@ class Cart extends Component {
       })
     }
 
-    deleteItem = (id, price) => {
+    deleteItem = (id) => {
       axios.delete(`/session/cart/${id}`).then(res => {
         console.log('deleted')
         {this.setState({count: 0})};
@@ -46,16 +45,34 @@ class Cart extends Component {
 
     onToken = (token) => {
       console.log('token', token)
+      console.log(token.card.address_line1)
       axios.post('/api/stripe', {
        method: 'POST',
-       body: token.id,
+       body: token,
        amount:this.state.count*100
       })
        .then(response => {
           console.log(response)
-          alert(`We are in business`);
-      })
-    };
+          if(response.data.success){
+            axios.post('/api/order', {shipping_address: token.card.address_line1, user_id: this.props.user.user.id})
+            .then(order => {
+              console.log('success!', order);
+              console.log('success!', order.data[0].id);
+              this.state.cart.map((item, i) => {
+                axios.post('api/line', {order_id: order.data[0].id, product_id: item.id})
+                .then(line => {
+                  console.log('super success!', line)
+                  console.log('index--->', i)
+                  if(i === this.state.cart.length-1){
+                    this.setState({cart: [], total: 0})
+                    alert(`Thank you for your purchase ${token.card.name}`)
+                  }
+                })
+              })
+            })
+          }
+        })
+    }
 
   render() {
     
@@ -71,8 +88,8 @@ class Cart extends Component {
             <h5>{item.name}</h5>
             <p>${item.price}</p>
             <img className='prodImg' src={item.img} />
-            {/* <p>{item.description}</p> */}
             {console.log(item.id)}
+            {console.log(this.props.user)}
             <button onClick={() => this.deleteItem(item.id, item.price)}>Delete From Cart</button>
           </div>
         })
@@ -101,14 +118,13 @@ class Cart extends Component {
         token={this.onToken}
         stripeKey="pk_test_rGBc29KX9tUGcuNiWorM9GuZ"
         amount={this.state.count*100}
+        shippingAddress={true}
       />
-      {/* <Checkout /> */}
       </div>
       </div>
     )
   }
 }
-// cart ? show ? showstuff : '' : ''
 
 const mapStateToProps = (state) => {
   return {

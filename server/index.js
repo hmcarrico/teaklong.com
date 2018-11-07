@@ -2,9 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const massive = require('massive');
 const session = require('express-session');
-const authController = require('./authController'); 
-const productController = require('./productController');
-const adminController = require('./adminController');
+const authController = require('./controllers/authController'); 
+const productController = require('./controllers/productController');
+const adminController = require('./controllers/adminController');
+const orderController = require('./controllers/orderController')
 const path = require('path');
 const stripe = require("stripe")("sk_test_48bsYBhFSRnBOUFnGUpFwpKk");
 require('dotenv').config();
@@ -18,16 +19,19 @@ app.use(session({
     resave: false,
   }));
 
+//Stripe Payment
 app.post("/api/stripe", (req, res) => {
     console.log('req.body-->', req.body.body)
     console.log('req.body-->', req.body)
     const stripeToken = req.body.body; // Using Express
     console.log('stripeToken', stripeToken)
+    console.log('stripeToken email======>', stripeToken.email)
     stripe.charges.create({
         amount: req.body.amount,
         currency: 'usd',
         description: 'Order Id',
-        source: stripeToken,
+        receipt_email: stripeToken.email,
+        source: stripeToken.id,
       }, function(err, charge) {
           console.log('charge', charge)
           if(err){
@@ -98,6 +102,10 @@ app.delete('/session/cart/:id', (req, res) => {
             res.json(req.session.cart)
         }
 })
+
+//Order Endpoints
+app.post('/api/order', orderController.createOrder);
+app.post('/api/line', orderController.createLine);
 
 //Zeit Host
 app.get('*', (req, res)=>{
