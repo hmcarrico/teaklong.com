@@ -55,7 +55,6 @@ class AddProduct extends Component {
             <p>Description: <input name='description' onChange={(e) => this.handleChangeInput(e)}/></p>
             <button onClick={() => this.addListing(this.state.type, this.state.name, this.state.price, this.state.image, this.state.description)}>Add Product</button>
             </div>
-            {console.log(this.state)}
             </div>
             :
             <div>

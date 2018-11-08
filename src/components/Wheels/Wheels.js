@@ -21,8 +21,6 @@ import {setProduct} from '../../ducks/reducer'
   }
 
   addToCart = (name, price, img, description, id) => {
-    console.log(this.props.user)
-    console.log(this.props.show)
     { this.props.show === true
       ?
     axios.post('/session/cart', {name: name, price: price, img: img, description: description, id: id}).then(cart => {
@@ -43,7 +41,6 @@ import {setProduct} from '../../ducks/reducer'
         <h3 >{wheel.name}</h3>
         <img alt='picture of wheel' className='prodImg' src={wheel.img} />
         <p>${wheel.price}</p>
-        {console.log(wheel.id)}
         {/* <p>{wheel.description}</p> */}
         {/* <button onClick={() => this.addToCart(wheel.name, wheel.price, wheel.img, wheel.description, wheel.id)}>Add to Cart</button> */}
         {/* <button className='titleHov' onClick={() => this.changePage({name: wheel.name, price: wheel.price, img: wheel.img, description: wheel.description,  type: wheel.type}, wheel.id)}>Details</button> */}
@@ -54,7 +51,6 @@ import {setProduct} from '../../ducks/reducer'
         <h1 className='titlee'>Wheels</h1>
         <div className='felxme'>
         {wheels}
-        {console.log(this.state.wheels)}
         </div>
       </div>
     )

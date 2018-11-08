@@ -19,7 +19,6 @@ class Nodemailer extends Component {
               email: email,  
               message: message
       }).then((response)=>{
-          console.log(response)
           if (response.data.msg === 'success'){
               alert("Message Sent."); 
               this.resetForm()

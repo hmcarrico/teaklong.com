@@ -21,8 +21,6 @@ class Decks extends Component {
     }
 
     addToCart = (name, price, img, description, id) => {
-      console.log(this.props.user)
-      console.log(this.props.show)
       { this.props.show === true
         ?
       axios.post('/session/cart', {name: name, price: price, img: img, description: description, id: id}).then(cart => {
@@ -53,7 +51,6 @@ class Decks extends Component {
         <h1 className='titlee'>Decks</h1>
         <div className='felxme'>
         {decks}
-        {console.log(this.state.decks)}
         </div>
       </div>
     )

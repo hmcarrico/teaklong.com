@@ -23,7 +23,6 @@ class Cart extends Component {
       axios.get('/session/cart').then(res => {
         let total = 0;
         if(res.data){
-        console.log(res.data)
         res.data.map(item => {
           return total += item.price
         })
@@ -44,25 +43,20 @@ class Cart extends Component {
     }
 
     onToken = (token) => {
-      console.log('token', token)
-      console.log(token.card.address_line1)
       axios.post('/api/stripe', {
        method: 'POST',
        body: token,
        amount:this.state.count*100
       })
        .then(response => {
-          console.log(response)
           if(response.data.success){
             axios.post('/api/order', {shipping_address: token.card.address_line1, user_id: this.props.user.user.id})
             .then(order => {
               console.log('success!', order);
-              console.log('success!', order.data[0].id);
               this.state.cart.map((item, i) => {
                 axios.post('api/line', {order_id: order.data[0].id, product_id: item.id})
                 .then(line => {
                   console.log('super success!', line)
-                  console.log('index--->', i)
                   if(i === this.state.cart.length-1){
                     this.setState({cart: [], total: 0})
                     alert(`Thank you for your purchase ${token.card.name}`)
@@ -79,17 +73,13 @@ class Cart extends Component {
     return (
       <div>
         <h1 className='cart-title'>Cart</h1>
-        {console.log(this.state.cart)}
         { this.state.cart.length !== 0 || this.props.show === true
         ?
           this.state.cart.map(item => {
           return <div className='prod-cart'>
-            {console.log(item)}
             <h5>{item.name}</h5>
             <p>${item.price}</p>
             <img className='prodImg' src={item.img} />
-            {console.log(item.id)}
-            {console.log(this.props.user)}
             <button onClick={() => this.deleteItem(item.id, item.price)}>Delete From Cart</button>
           </div>
         })

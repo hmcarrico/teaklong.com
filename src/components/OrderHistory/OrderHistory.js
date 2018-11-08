@@ -43,7 +43,6 @@ class OrderHistory extends Component {
 
 
             )}
-            {console.log(this.state.history)}
             </div>
             :
             <div>

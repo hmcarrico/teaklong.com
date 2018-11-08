@@ -41,8 +41,6 @@ class Nav1 extends Component {
     return (
       <div className='tomato'>
         <nav>
-        {console.log(user)}
-        {console.log(show)}
         <Link to='/'><button>Home</button></Link>
         <Link to='/products/all'><button>Products</button></Link>
         <Link to='/cart'><button>Cart</button></Link>

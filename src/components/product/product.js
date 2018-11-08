@@ -68,7 +68,6 @@ class Product extends Component {
           <b>Price:</b> {item.price} <br />
           <img className='prodImg' src={item.img} /> <br />
           <p className='desc'><b>Description:</b> {item.description} </p> <br />
-          {console.log(item.id)}
           <button onClick={() => this.addToCart(item.name, item.price, item.img, item.description, item.id)}>Add to Cart</button>
           {
             this.props.show === true &&
@@ -84,7 +83,6 @@ class Product extends Component {
           </div>
         })
         }
-        {console.log(this.state.items)}
         </div>
       </div>
     )
