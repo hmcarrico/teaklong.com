@@ -25,10 +25,13 @@ class Product extends Component {
   }
   
   addToCart = (name, price, img, description, id) => {
-    console.log('product id for cart---->', id)
+    { this.props.show === true
+      ?
     axios.post('/session/cart', {name: name, price: price, img: img, description: description, id: id}).then(cart => {
       console.log('added to cart', cart)
     })
+    : alert('please log in to add to cart')
+    } 
   }
 
   deleteItem = (id) => {
