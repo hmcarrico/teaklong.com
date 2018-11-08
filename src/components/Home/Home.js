@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Footer from '../Footer/Footer';
+import axios from 'axios';
 import './Home.css'
 
 class Home extends Component {
@@ -13,7 +14,6 @@ class Home extends Component {
   render() {
     return (
       <div className='backk'>
-      {/* <ReactPlayer muted loop url='https://www.youtube.com/watch?v=ysz5S6PUM-U' playing /> */}
         <p className='teak'>
         Teak 
         Long

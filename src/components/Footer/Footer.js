@@ -17,7 +17,7 @@ class Footer extends Component {
             </div>
             :
             <div>
-                You are not an admin
+                <Link to='/contact'><button>Contact</button></Link>
             </div>
         }
 

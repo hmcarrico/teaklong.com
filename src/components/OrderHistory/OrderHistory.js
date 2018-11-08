@@ -29,13 +29,15 @@ class OrderHistory extends Component {
           {this.state.history.length !== 0 || this.props.show === true
           ? <div>
             <h1>{this.props.user.user.profile_name}</h1>
-            <img src={this.props.user.user.picture} />
+            <img src={this.props.user.user.picture} className='profPic'/>
             <h3>Order History</h3>
-            {this.state.history.map((order, i) => {
+            <hr/>
+            {this.state.history.map(order => {
                 return <div>
-                    <h4>Order Number:</h4><p>{order.order_id}</p>
+                    <h4>Order ID:</h4><p>{order.order_id}</p>
                     <p>{order.shipping_address}</p>
-                    {/* <img src={this.state.pic.picture[i+1]} className='lol'/> */}
+                    <img src={order.img} className='lol' />
+                    <hr/>
                     </div>               
                }
 

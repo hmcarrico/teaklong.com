@@ -1,10 +1,14 @@
-.order img {
+.profPic {
     margin: 15px auto;
     border: 10px solid black;
     padding: 10px;
+    max-width: 200px;
+    max-height: 200px;
 }
 
 .lol {
     max-width: 300px;
     max-height: 300px;
+    border: none;
+    padding: none;
 }

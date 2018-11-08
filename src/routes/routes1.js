@@ -5,6 +5,7 @@ import Cart from '../components/Cart/Cart';
 import Products from '../components/Products/Products';
 import Add from '../components/AddProduct/AddProduct';
 import OrderHistory from '../components/OrderHistory/OrderHistory';
+import Mail from '../components/Nodemailer/Nodemailer';
 
 export default <Switch>
     <Route exact path='/' component={Home} />
@@ -12,4 +13,5 @@ export default <Switch>
     <Route path='/products' component={Products} />
     <Route path='/admin/add' component={Add} />
     <Route path='/orders' component={OrderHistory} />
+    <Route path='/contact' component={Mail} />
 </Switch>
