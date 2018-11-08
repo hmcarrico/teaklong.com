@@ -13,5 +13,12 @@ module.exports = {
             res.status(200).json(order)
         })
         req.session.cart = [];
+    },
+    orderHistory: (req, res) => {
+        const db = req.app.get('db');
+        const {id} = req.params;
+        db.order_history_get([id]).then(history => {
+            res.status(200).send(history)
+        })
     }
 }

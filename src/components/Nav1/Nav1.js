@@ -54,7 +54,7 @@ class Nav1 extends Component {
         {show &&
         <div className='navProfile'>
           {/* Welcome, {user.user.profile_name} {'     '} */}
-          <img src={user.user.picture} />
+          <Link to='/orders'><img src={user.user.picture}/></Link>
         </div>
         }
         </nav>

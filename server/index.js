@@ -106,8 +106,9 @@ app.delete('/session/cart/:id', (req, res) => {
 //Order Endpoints
 app.post('/api/order', orderController.createOrder);
 app.post('/api/line', orderController.createLine);
+app.get('/api/history/:id', orderController.orderHistory);
 
-//Zeit Host
+//Zeit Host/ocean
 app.get('*', (req, res)=>{
     res.sendFile(path.join(__dirname, '../build/index.html'));
   })
