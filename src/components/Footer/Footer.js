@@ -18,7 +18,9 @@ class Footer extends Component {
             </div>
             :
             <div>
-                <Link to='/contact'><button>Contact</button></Link>
+                <Link to='/contact'><button>Contact</button></Link> <br />
+                <Link to='/boarding-weather-conditions'><button className='shop2'>Weather Conditions for Boarding</button></Link> <br />
+                
             </div>
         }
 

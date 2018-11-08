@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Footer from '../Footer/Footer';
-import axios from 'axios';
+import {Link} from 'react-router-dom';
+import board from '../../media/board.png';
 import './Home.css'
 
 class Home extends Component {
@@ -18,6 +19,7 @@ class Home extends Component {
         Teak 
         Long
         Boards</p>
+        <Link to='/products/all'><button className='shop'>Shop Now</button></Link><br />
         <Footer className='foot' />
       </div>
     )

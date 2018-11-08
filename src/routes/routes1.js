@@ -6,6 +6,7 @@ import Products from '../components/Products/Products';
 import Add from '../components/AddProduct/AddProduct';
 import OrderHistory from '../components/OrderHistory/OrderHistory';
 import Mail from '../components/Nodemailer/Nodemailer';
+import Weather from '../components/Weather/Weather.js';
 
 export default <Switch>
     <Route exact path='/' component={Home} />
@@ -14,4 +15,5 @@ export default <Switch>
     <Route path='/admin/add' component={Add} />
     <Route path='/orders' component={OrderHistory} />
     <Route path='/contact' component={Mail} />
+    <Route path='/boarding-weather-conditions' component={Weather} />
 </Switch>

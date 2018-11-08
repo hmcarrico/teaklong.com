@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
+import {updateShow, updateUser} from '../../ducks/reducer';
 import './OrderHistory.css';
 
 class OrderHistory extends Component {
@@ -22,6 +23,14 @@ class OrderHistory extends Component {
     }
     }
 
+    logout = () => {
+        axios.post('/api/logout').then(() => {
+          this.props.updateShow(false)
+          this.props.updateUser(null)
+          alert('Logged Out')
+      })
+    }
+
 
   render() {
     return (
@@ -29,7 +38,8 @@ class OrderHistory extends Component {
           {this.state.history.length !== 0 || this.props.show === true
           ? <div>
             <h1>{this.props.user.user.profile_name}</h1>
-            <img src={this.props.user.user.picture} className='profPic'/>
+            <img src={this.props.user.user.picture} className='profPic'/> <br />
+            <button onClick={this.logout}>Log Out</button>
             <h3>Order History</h3>
             <hr/>
             {this.state.history.map(order => {
@@ -37,6 +47,7 @@ class OrderHistory extends Component {
                     <h4>Order ID:</h4><p>{order.order_id}</p>
                     <p>{order.shipping_address}</p>
                     <img src={order.img} className='lol' />
+                    <button onClick={() => this.logout()}>Log Out</button>
                     <hr/>
                     </div>               
                }
@@ -61,4 +72,4 @@ const mapStateToProps = (state) => {
     }
   }
 
-export default connect(mapStateToProps)(OrderHistory);
+export default connect(mapStateToProps, {updateShow, updateUser})(OrderHistory);

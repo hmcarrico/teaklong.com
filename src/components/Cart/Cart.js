@@ -43,6 +43,8 @@ class Cart extends Component {
     }
 
     onToken = (token) => {
+      {this.state.cart.length !== 0 || this.props.show === true
+        ?
       axios.post('/api/stripe', {
        method: 'POST',
        body: token,
@@ -66,6 +68,8 @@ class Cart extends Component {
             })
           }
         })
+        : alert('Please make sure you are logged in and cart is not empty')
+      }
     }
 
   render() {
@@ -73,7 +77,7 @@ class Cart extends Component {
     return (
       <div>
         <h1 className='cart-title'>Cart</h1>
-        { this.state.cart.length !== 0 || this.props.show === true
+        { this.state.cart.length !== 0
         ?
           this.state.cart.map(item => {
           return <div className='prod-cart'>
@@ -104,12 +108,16 @@ class Cart extends Component {
           : ''
         }
         <div>
+          {this.state.cart.length !== 0 && this.props.show === true
+          ?
        <StripeCheckout
         token={this.onToken}
         stripeKey="pk_test_rGBc29KX9tUGcuNiWorM9GuZ"
         amount={this.state.count*100}
         shippingAddress={true}
       />
+      : <div></div>
+      }
       </div>
       </div>
     )
