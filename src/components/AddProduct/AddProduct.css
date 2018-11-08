@@ -23,6 +23,16 @@
    border: none;
 }
 
+.addList textarea {
+    border: solid rgb(230, 95, 93) 2px;
+}
+
+.addImage {
+    max-width: 300px;
+    max-height: 300px;
+    border: 5px solid black;
+}
+
 .addList button:hover{
    color: rgb(230, 95, 93);
 }

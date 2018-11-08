@@ -16,6 +16,11 @@
   text-align: center;
 }
 
+
+.widget.slider.multiple_enabled.active.opened{
+  width: 100px!important;
+}
+
 .foot {
   position: fixed;
   left: 0;
