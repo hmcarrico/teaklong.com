@@ -36,7 +36,7 @@ class OrderHistory extends Component {
     return (
       <div className='order'>
           {this.state.history.length !== 0 || this.props.show === true
-          ? <div>
+          ? <div className='prof'>
             <h1>{this.props.user.user.profile_name}</h1>
             <img src={this.props.user.user.picture} className='profPic'/> <br />
             <button onClick={this.logout}>Log Out</button>

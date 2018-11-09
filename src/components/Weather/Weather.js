@@ -35,7 +35,7 @@ class Weather extends Component{
                     <input placeholder='Enter Zip Code' onChange={this.handleWeather}/>
                     <button onClick={() => this.weather(parseInt(this.state.weatherInput))}>GET WEATHER</button>
                     </div>
-                    <br /><br />
+                    <br /> <br />
                 </div>
                 {this.state.weather.map(weath => {
                     return (
@@ -44,7 +44,7 @@ class Weather extends Component{
                         <p><b>Current: </b>{Math.floor(weath.cur)}<span>&#8457;</span></p>
                         <p><b>Max: </b>{Math.floor(weath.max)}<span>&#8457;</span></p>
                         <p><b>Min: </b>{Math.floor(weath.min)}<span>&#8457;</span></p>
-                        <b>Desctiption: </b><br /><p>{weath.desc}</p>
+                        <b>Description: </b><br /><p>{weath.desc}</p>
                     </div>
                     )
                 })}

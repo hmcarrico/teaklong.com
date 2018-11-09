@@ -15,7 +15,9 @@
     width: 100%;
     background: #262626;
     display: flex;
-    
+    position: fixed;
+    top: 0;
+    margin-bottom: 50px;
 }
 
 .tomato button {

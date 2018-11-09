@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
-import './product.css'
+import './product.css';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
 
 class Product extends Component {
   constructor(props) {
@@ -27,7 +29,7 @@ class Product extends Component {
   addToCart = (name, price, img, description, id) => {
     { this.props.show === true
       ?
-    axios.post('/session/cart', {name: name, price: price, img: img, description: description, id: id}).then(cart => {
+      axios.post('/session/cart', {name: name, price: price, img: img, description: description, id: id}).then(cart => {
       alert(`${name} added to cart`)
     })
     : alert('please log in to add to cart')
@@ -66,7 +68,10 @@ class Product extends Component {
           <button className='left' onClick={() => this.props.history.push(`/products/${item.type}s`)}>Back</button> <br />
           <h1>{item.name}</h1> <br />
           <b>Price:</b> {item.price} <br />
-          <img className='prodImg' src={item.img} /> <br />
+          {/* <Carousel> */}
+            <img className='prodImg' src={item.img} />
+          {/* </Carousel> */}
+          <br />
           <p className='desc'><b>Description:</b> {item.description} </p> <br />
           <button onClick={() => this.addToCart(item.name, item.price, item.img, item.description, item.id)}>Add to Cart</button>
           {

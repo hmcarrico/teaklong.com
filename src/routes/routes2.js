@@ -7,6 +7,7 @@ import Product from '../components/product/product';
 import All from '../components/AllProducts/AllProducts';
 import Add from '../components/AddProduct/AddProduct';
 
+
 export default <Switch>
     <Route exact path='/products/completes' component={Completes} />
     <Route path='/products/decks' component={Decks} />

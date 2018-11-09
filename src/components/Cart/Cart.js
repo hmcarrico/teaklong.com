@@ -22,6 +22,7 @@ class Cart extends Component {
     getCart = () => {
       axios.get('/session/cart').then(res => {
         let total = 0;
+        console.log(res.data)
         if(res.data){
         res.data.map(item => {
           return total += item.price
