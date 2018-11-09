@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import Footer from '../Footer/Footer';
 import {Link} from 'react-router-dom';
-import board from '../../media/board.png';
+import Modal from 'react-responsive-modal';
 import './Home.css'
 
 class Home extends Component {
     constructor(){
         super();
         this.state = {
-
+          open: false
         }
     }
 
@@ -18,7 +18,7 @@ class Home extends Component {
         <p className='teak'>
         Teak 
         Long
-        Boards</p>
+        Boards</p>  
         <Link to='/products/all'><button className='shop'>Shop Now</button></Link><br />
         <Footer className='foot' />
       </div>

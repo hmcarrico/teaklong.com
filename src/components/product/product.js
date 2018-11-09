@@ -28,7 +28,7 @@ class Product extends Component {
     { this.props.show === true
       ?
     axios.post('/session/cart', {name: name, price: price, img: img, description: description, id: id}).then(cart => {
-      console.log('added to cart', cart)
+      alert(`${name} added to cart`)
     })
     : alert('please log in to add to cart')
     } 

@@ -1,5 +1,5 @@
 .weath {
-    height: 100vh;
+    /* height: 210vh; */
     background-image: url('https://us.123rf.com/450wm/krugli/krugli1608/krugli160800073/61420963-sea-surfing-pattern-with-different-type-surf-desks-surfboard-seamless-background-in-retro-colors-sum.jpg?ver=6');
     position: fixed;
 }
@@ -8,7 +8,7 @@
     background: #262626;
     padding: 10px;
     width: 300px;
-    margin: 0 auto;
+    margin: 0px auto 50px auto;
     color: white;
     border: 5px solid white;
     border-radius: 10px;
@@ -16,9 +16,9 @@
 
 .topp {
     background: #262626;
-    padding: 10px;
+    padding: 0px 10px 10px 10px;
     width: 92%;
-    margin: 15px auto;
+    margin: 30px auto;
     color: white;
     border: 5px solid white;
     border-radius: 10px;
