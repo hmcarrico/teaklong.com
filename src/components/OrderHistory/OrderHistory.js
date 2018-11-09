@@ -47,7 +47,6 @@ class OrderHistory extends Component {
                     <h4>Order ID:</h4><p>{order.order_id}</p>
                     <p>{order.shipping_address}</p>
                     <img src={order.img} className='lol' />
-                    <button onClick={() => this.logout()}>Log Out</button>
                     <hr/>
                     </div>               
                }
