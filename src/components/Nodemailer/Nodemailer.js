@@ -34,7 +34,7 @@ class Nodemailer extends Component {
 
   render() {
     return (
-        <div>
+        <div className='mail'>
         <h2>Contact Support Team</h2>
         <form id="contact-form" method="POST">
           <div className="form-group">

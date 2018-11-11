@@ -29,5 +29,37 @@ module.exports = {
         db.get_product(id).then(item => {
             res.status(200).json(item)
         })
+    },
+    search: (req, res) => {
+        const db = req.app.get('db');
+        let {search} = req.params;
+        db.searchItem(`%${search}%`).then(items => {
+            console.log(items)
+            res.status(200).send(items)
+        })
+    },
+    searchWheels: (req, res) => {
+        const db = req.app.get('db');
+        let {search} = req.params;
+        db.search_wheels(`%${search}%`).then(items => {
+            console.log(items)
+            res.status(200).send(items)
+        })
+    },
+    searchCompletes: (req, res) => {
+        const db = req.app.get('db');
+        let {search} = req.params;
+        db.search_completes(`%${search}%`).then(items => {
+            console.log(items)
+            res.status(200).send(items)
+        })
+    },
+    searchDecks: (req, res) => {
+        const db = req.app.get('db');
+        let {search} = req.params;
+        db.search_decks(`%${search}%`).then(items => {
+            console.log(items)
+            res.status(200).send(items)
+        })
     }
 }

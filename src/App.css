@@ -5,12 +5,13 @@
 .titlee {
   font-size: 50px;
   text-align: center;
-  margin-top: 45px;
+  margin-top: 70px;
+  margin-bottom: 0px;
 }
 
 .prod:hover {
   cursor: pointer;
-  transform: scale(1.1);
+  /* transform: scale(1.1); */
 }
 
 *{
@@ -26,4 +27,44 @@
   position: fixed;
   left: 0;
   bottom: 0;
+}
+
+label {
+  color: white;
+  padding-right: 6px;
+}
+
+#contact-form label{
+  text-align: left;
+}
+.form-control{
+  border: 2px #262626 solid;
+  margin: 20px;
+}
+textarea#message.form-control{
+  border: 2px #262626 solid;
+  margin: 0;
+}
+
+.btn {
+  margin-top: 80px;
+}
+
+.mail {
+  background: #262626;
+  border-radius: 10px;
+  margin: 80px auto;
+}
+
+.mail h2 {
+  color: white;
+  padding-top: 20px;
+}
+
+.btn-primary {
+  padding-bottom: 100px;
+  padding-top: 0px;
+  color: white;
+  padding: 40px;
+  font-size: 30px;
 }

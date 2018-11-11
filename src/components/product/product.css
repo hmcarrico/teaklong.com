@@ -31,11 +31,12 @@
 }
 
 .felxme input {
-    /* background: #262626; */
-    /* color: white; */
     border: 2px #262626 solid;
     border-radius: 5px;
     margin-right: 7px;
+    margin-top: 7px;
+    width: 120px;
+    height: 10px;
 }
 .felxme button {
     background: #262626;
@@ -44,4 +45,6 @@
     border: none;
     border-radius: 5px;
     padding: 5px;
+    width: 90px;
+    height: 30px;
 }

@@ -9,7 +9,8 @@ class Completes extends Component {
     constructor(){
         super();
         this.state = {
-          completes: []
+          completes: [],
+          searchText: ''
         }
     }
 
@@ -36,25 +37,44 @@ class Completes extends Component {
       this.props.history.push(`/products/${type}/item/${id}`)
     }
 
+    searchItems = (item) => {
+      axios.get(`/api/search/${item}`).then(res => {
+        this.setState({completes: res.data})
+      })
+    }
+
+    handleSearch = (e) => {
+      this.setState({
+          [e.target.name]: e.target.value
+      })
+  }
+
   render() {
-    let completes = this.state.completes.map(board => {
-      return <div className='prod' onClick={() => this.changePage({name: board.name, price: board.price, img: board.img, description: board.description, type: board.type, id: board.id}, board.id, board.type)}>
-        <h3>{board.name}</h3>
-        <img alt='picture of a longboard' className='prodImg' src={board.img} />
-        <p>${board.price}</p>
-        {/* <p>{board.description}</p> */}
-        {/* <button onClick={() => this.addToCart(board.name, board.price, board.img, board.description, board.id)}>Add to Cart</button> */}
-        {/* <button className='titleHov' onClick={() => this.changePage({name: board.name, price: board.price, img: board.img, description: board.description, type: board.type}, board.id)}>Details</button> */}
-      </div>
-    })
     return (
       <div className='hundred'>
         <h1 className='titlee'>All Products</h1>
         <div className='felxme'>
-        {completes}
+        <input name='searchText' onChange={(e) => this.handleSearch(e)}/>
+        <button onClick={() => this.searchItems(this.state.searchText)}>Search</button>
+        {
+          this.state.completes !== []
+          ?
+          this.state.completes.map(board => {
+            return <div className='prod' onClick={() => this.changePage({name: board.name, price: board.price, img: board.img, description: board.description, type: board.type, id: board.id}, board.id, board.type)}>
+              <h3>{board.name}</h3>
+              <img alt='picture of a longboard' className='prodImg' src={board.img} />
+              <p>${board.price}</p>
+              {/* <p>{board.description}</p> */}
+              {/* <button onClick={() => this.addToCart(board.name, board.price, board.img, board.description, board.id)}>Add to Cart</button> */}
+              {/* <button className='titleHov' onClick={() => this.changePage({name: board.name, price: board.price, img: board.img, description: board.description, type: board.type}, board.id)}>Details</button> */}
+            </div>
+          })
+        : <div></div>
+        }
+        {console.log(this.state.searchText)}
         </div>
         {
-            this.props.user !== null
+            this.props.user !== null 
             ?
             <div>
             </div>

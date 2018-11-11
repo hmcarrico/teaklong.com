@@ -27,7 +27,8 @@ class OrderHistory extends Component {
         axios.post('/api/logout').then(() => {
           this.props.updateShow(false)
           this.props.updateUser(null)
-          alert('Logged Out')
+          alert('Logged Out');
+          this.props.history.push('/')
       })
     }
 

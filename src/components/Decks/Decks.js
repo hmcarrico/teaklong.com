@@ -8,7 +8,8 @@ class Decks extends Component {
     constructor(){
         super();
         this.state = {
-          decks: []
+          decks: [],
+          searchText: ''
         }
     }
 
@@ -35,6 +36,18 @@ class Decks extends Component {
       this.props.history.push(`/products/${type}/item/${id}`)
     }
 
+    searchItems = (item) => {
+      axios.get(`/api/searchDecks/${item}`).then(res => {
+        this.setState({decks: res.data})
+      })
+    }
+
+    handleSearch = (e) => {
+      this.setState({
+          [e.target.name]: e.target.value
+      })
+  }
+
   render() {
     const decks = this.state.decks.map(deck => {
       return <div className='prod' onClick={() => this.changePage({name: deck.name, price: deck.price, img: deck.img, description: deck.description,  type: deck.type, id: deck.id},deck.id, deck.type)}>
@@ -49,6 +62,8 @@ class Decks extends Component {
     return (
       <div className='hundred'>
         <h1 className='titlee'>Decks</h1>
+        <input name='searchText' onChange={(e) => this.handleSearch(e)}/>
+        <button onClick={() => this.searchItems(this.state.searchText)}>Search</button>
         <div className='felxme'>
         {decks}
         </div>

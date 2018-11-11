@@ -11,7 +11,7 @@ class Footer extends Component {
             this.props.show === true &&
             this.props.user.user.admin === true
             ?
-            <div >
+            <div>
                 Admin: {this.props.user.user.profile_name} <br />
                 <Link to='/admin/add'><button>Add Product</button></Link>
                 <Link to='/contact'><button>Contact</button></Link>

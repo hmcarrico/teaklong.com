@@ -9,7 +9,8 @@ class Completes extends Component {
     constructor(){
         super();
         this.state = {
-          completes: []
+          completes: [],
+          searchText: ''
         }
     }
 
@@ -36,6 +37,18 @@ class Completes extends Component {
       this.props.history.push(`/products/${type}/item/${id}`)
     }
 
+    searchItems = (item) => {
+      axios.get(`/api/searchCompletes/${item}`).then(res => {
+        this.setState({completes: res.data})
+      })
+    }
+
+    handleSearch = (e) => {
+      this.setState({
+          [e.target.name]: e.target.value
+      })
+  }
+
   render() {
     let completes = this.state.completes.map(board => {
       return <div className='prod' onClick={() => this.changePage({name: board.name, price: board.price, img: board.img, description: board.description, type: board.type, id: board.id}, board.id, board.type )}>
@@ -50,6 +63,8 @@ class Completes extends Component {
     return (
       <div className='hundred'>
         <h1 className='titlee'>Completes</h1>
+        <input name='searchText' onChange={(e) => this.handleSearch(e)}/>
+        <button onClick={() => this.searchItems(this.state.searchText)}>Search</button>
         <div className='felxme'>
         {completes}
         </div>

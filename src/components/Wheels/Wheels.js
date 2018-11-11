@@ -8,7 +8,8 @@ import {setProduct} from '../../ducks/reducer'
   constructor(){
     super();
     this.state = {
-      wheels: []
+      wheels: [],
+      searchText: ''
     }
   }
 
@@ -35,6 +36,18 @@ import {setProduct} from '../../ducks/reducer'
     this.props.history.push(`/products/${type}/item/${id}`)
   }
 
+  searchItems = (item) => {
+    axios.get(`/api/searchWheels/${item}`).then(res => {
+      this.setState({wheels: res.data})
+    })
+  }
+
+  handleSearch = (e) => {
+    this.setState({
+        [e.target.name]: e.target.value
+    })
+}
+
   render() {
     const wheels = this.state.wheels.map(wheel => {
       return <div className='prod' onClick={() => this.changePage({name: wheel.name, price: wheel.price, img: wheel.img, description: wheel.description,  type: wheel.type, id: wheel.id}, wheel.id, wheel.type)}>
@@ -49,6 +62,8 @@ import {setProduct} from '../../ducks/reducer'
     return (
       <div className='hundred'>
         <h1 className='titlee'>Wheels</h1>
+        <input name='searchText' onChange={(e) => this.handleSearch(e)}/>
+        <button onClick={() => this.searchItems(this.state.searchText)}>Search</button>
         <div className='felxme'>
         {wheels}
         </div>

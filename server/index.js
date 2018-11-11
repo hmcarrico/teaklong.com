@@ -111,6 +111,10 @@ app.get('/api/decks', productController.getDecks);
 app.get('/api/wheels', productController.getWheels);
 app.get('/api/all', productController.getAll);
 app.get('/api/one/:id', productController.getOne);
+app.get('/api/search/:search', productController.search)
+app.get('/api/searchCompletes/:search', productController.searchCompletes)
+app.get('/api/searchDecks/:search', productController.searchDecks)
+app.get('/api/searchWheels/:search', productController.searchWheels)
 
 //Admin Products
 app.post('/api/add', adminController.addProduct);
