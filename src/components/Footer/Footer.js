@@ -15,12 +15,14 @@ class Footer extends Component {
                 Admin: {this.props.user.user.profile_name} <br />
                 <Link to='/admin/add'><button>Add Product</button></Link>
                 <Link to='/contact'><button>Contact</button></Link>
+                <Link to='/boarding-weather-conditions'><button className='shop2'>Weather Conditions for Boarding</button></Link> <br />
+                <p>Created by Hunter Carrico☯️</p>
             </div>
             :
             <div>
                 <Link to='/contact'><button>Contact</button></Link> <br />
                 <Link to='/boarding-weather-conditions'><button className='shop2'>Weather Conditions for Boarding</button></Link> <br />
-                
+                <p>Created by Hunter Carrico☯️</p>                
             </div>
         }
 

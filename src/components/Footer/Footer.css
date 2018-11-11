@@ -1,8 +1,15 @@
 .footer {
     background: rgb(230, 95, 93);
-    border-top: solid 2px black;
-    position: fixed;
-    left: 0;
-    bottom: 0;
+    border-top: solid 5px black;
+    /* position: fixed; */
+    /* left: 0; */
+    /* bottom: 0; */
+    margin-top: 70px;
     width: 100%;
+    background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-dark.png");
+    background-image: url("https://www.transparenttextures.com/patterns/cartographer.png");
+}
+
+.footer p {
+    margin: 0;
 }
