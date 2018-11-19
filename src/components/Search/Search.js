@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import {connect} from 'react-redux';
 import {setProduct} from '../../ducks/reducer'
-import {Link} from 'react-router-dom';
-import myHOC from '../HOC/myHOC'
-import './AllProducts.css';
+import './Search.css';
 
-class Completes extends Component {
+class Search extends Component {
     constructor(){
         super();
         this.state = {
-          searchText: ''
+          searchText: '',
+          completes: []
         }
     }
 
@@ -18,16 +18,30 @@ class Completes extends Component {
       this.props.history.push(`/products/${type}/item/${id}`)
     }
 
+    searchItems = (item) => {
+      axios.get(`/api/search/${item}`).then(res => {
+        this.setState({completes: res.data})
+      })
+    }
+
+    handleSearch = (e) => {
+      this.setState({
+          [e.target.name]: e.target.value
+      })
+  }
+
   render() {
     return (
       <div className='hundred'>
-        <h1 className='titlee'>All Products</h1>
+        <h1 className='titlee'>Search</h1>
         <div className='felxme'>
-        <Link to='/search'><button className='coolButton'>Search</button></Link>
+        {console.log(this.state.completes.length)}
+        <input name='searchText' onChange={(e) => this.handleSearch(e)}/>
+        <button onClick={() => this.searchItems(this.state.searchText)}>Search</button>
         {
-          this.props.data !== null
+             this.state.completes.length > 0
           ?
-          this.props.data.map(board => {
+          this.state.completes.map(board => {
             return <div className='prod' onClick={() => this.changePage({name: board.name, price: board.price, img: board.img, description: board.description, type: board.type, id: board.id}, board.id, board.type)}>
               <h3>{board.name}</h3>
               <img alt='picture of a longboard' className='prodImg' src={board.img} />
@@ -37,6 +51,15 @@ class Completes extends Component {
         : <div></div>
         }
         </div>
+        {
+            this.props.user !== null || this.state.completes.length === 0
+            ?
+            <div>
+            </div>
+            :<div>
+                
+            </div>
+        }
       </div>
     )
   }
@@ -49,4 +72,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default myHOC(connect(mapStateToProps, {setProduct})(Completes), '/api/all')
+export default connect(mapStateToProps, {setProduct})(Search)

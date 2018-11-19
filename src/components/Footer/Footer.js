@@ -13,16 +13,16 @@ class Footer extends Component {
             ?
             <div>
                 Admin: {this.props.user.user.profile_name} <br />
-                <Link to='/admin/add'><button>Add Product</button></Link>
-                <Link to='/contact'><button>Contact</button></Link>
+                <Link to='/admin/add'><button className='shop4'>Add Product</button></Link>
+                <Link to='/contact'><button className='shop3'>Contact</button></Link>
                 <Link to='/boarding-weather-conditions'><button className='shop2'>Weather Conditions for Boarding</button></Link> <br />
-                <p>Created by Hunter Carrico☯️</p>
+                <p className='created'>Created by Hunter Carrico☯</p>
             </div>
             :
             <div>
-                <Link to='/contact'><button>Contact</button></Link> <br />
-                <Link to='/boarding-weather-conditions'><button className='shop2'>Weather Conditions for Boarding</button></Link> <br />
-                <p>Created by Hunter Carrico☯️</p>                
+                <Link to='/contact'><div className='shop4'>Contact</div></Link> <br />
+                <Link to='/boarding-weather-conditions'><div className='shop2'>Weather Conditions for Boarding</div></Link> <br />
+                <p className='created'>Created by Hunter Carrico☯</p>                
             </div>
         }
 

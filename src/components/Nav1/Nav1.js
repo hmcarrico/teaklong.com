@@ -46,7 +46,7 @@ class Nav1 extends Component {
       <div className='tomato'>
         <nav>
         <Link to='/'><button>Home</button></Link>
-        <Link to='/products/all'><button onClick={() => window.location.reload()}>Products</button></Link>
+        <Link to='/products/all'><button>Products</button></Link>
         <Link to='/cart'><button>Cart</button></Link>
         {show === false ?
         <button onClick={() => this.login()}>Log in</button>

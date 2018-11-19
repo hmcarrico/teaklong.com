@@ -49,7 +49,7 @@ class Cart extends Component {
       axios.post('/api/stripe', {
        method: 'POST',
        body: token,
-       amount:this.state.count*100
+       amount: this.state.count * 100
       })
        .then(response => {
           if(response.data.success){
@@ -61,7 +61,7 @@ class Cart extends Component {
                 .then(line => {
                   console.log('super success!', line)
                   if(i === this.state.cart.length-1){
-                    this.setState({cart: [], total: 0})
+                    this.setState({cart: [], count: 0})
                     alert(`Thank you for your purchase ${token.card.name}`)
                   }
                 })
@@ -80,14 +80,18 @@ class Cart extends Component {
         <h1 className='cart-title'>Cart</h1>
         { this.state.cart.length !== 0
         ?
-          this.state.cart.map(item => {
+        <div>
+          {this.state.cart.map(item => {
           return <div className='prod-cart'>
             <h5>{item.name}</h5>
             <p>${item.price}</p>
             <img className='prodImg' src={item.img} />
             <button onClick={() => this.deleteItem(item.id, item.price)}>Delete From Cart</button>
           </div>
+          
         })
+        }
+        </div>
         :<div> 
         <p className='info'>Nothing in cart</p>
        </div>

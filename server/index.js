@@ -22,7 +22,6 @@ app.use(session({
 //Nodemailer
 const nodemailer = require('nodemailer');
 const creds = require('../nodemailer');
-
 let transport = {
   host: 'smtp.gmail.com',
   auth: {
@@ -30,9 +29,7 @@ let transport = {
     pass: creds.PASS
   }
 }
-
 let transporter = nodemailer.createTransport(transport)
-
 transporter.verify((error, success) => {
   if (error) {
     console.log(error);
@@ -41,7 +38,7 @@ transporter.verify((error, success) => {
   }
 });
 
-app.post('/send', (req, res, next) => {
+app.post('/send', (req, res) => {
     let name = req.body.name
     let email = req.body.email
     let message = req.body.message
@@ -49,7 +46,7 @@ app.post('/send', (req, res, next) => {
   
     let mail = {
       from: name,
-      to: 'teaklongcom@gmail.com',  //Change to email address that you want to receive messages on
+      to: 'teaklongcom@gmail.com',
       subject: 'New Message from Contact Form',
       text: content
     }
@@ -69,11 +66,7 @@ app.post('/send', (req, res, next) => {
 )
 //Stripe Payment
 app.post("/api/stripe", (req, res) => {
-    console.log('req.body-->', req.body.body)
-    console.log('req.body-->', req.body)
-    const stripeToken = req.body.body; // Using Express
-    console.log('stripeToken', stripeToken)
-    console.log('stripeToken email======>', stripeToken.email)
+    const stripeToken = req.body.body;
     stripe.charges.create({
         amount: req.body.amount,
         currency: 'usd',

@@ -1,34 +1,16 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import {connect} from 'react-redux';
 import {setProduct} from '../../ducks/reducer'
+import {Link} from 'react-router-dom';
+import myHOC from '../HOC/myHOC'
 import './Decks.css'
 
 class Decks extends Component {
     constructor(){
         super();
         this.state = {
-          decks: [],
           searchText: ''
         }
-    }
-
-    componentDidMount(){
-      axios.get('/api/decks').then(res => {
-        this.setState({
-          decks: res.data
-        })
-      })
-    }
-
-    addToCart = (name, price, img, description, id) => {
-      { this.props.show === true
-        ?
-      axios.post('/session/cart', {name: name, price: price, img: img, description: description, id: id}).then(cart => {
-        console.log('added to cart', cart)
-      })
-      : alert('please log in to add to cart')
-      } 
     }
 
     changePage = (obj, id, type) => {
@@ -36,34 +18,18 @@ class Decks extends Component {
       this.props.history.push(`/products/${type}/item/${id}`)
     }
 
-    searchItems = (item) => {
-      axios.get(`/api/searchDecks/${item}`).then(res => {
-        this.setState({decks: res.data})
-      })
-    }
-
-    handleSearch = (e) => {
-      this.setState({
-          [e.target.name]: e.target.value
-      })
-  }
-
   render() {
-    const decks = this.state.decks.map(deck => {
+    const decks = this.props.data.map(deck => {
       return <div className='prod' onClick={() => this.changePage({name: deck.name, price: deck.price, img: deck.img, description: deck.description,  type: deck.type, id: deck.id},deck.id, deck.type)}>
         <h3 className='titleHov' >{deck.name}</h3>
         <img alt='picture of skateboard deck' className='prodImg' src={deck.img} />
         <p>${deck.price}</p>
-        {/* <p>{deck.description}</p> */}
-        {/* <button onClick={() => this.changePage({name: deck.name, price: deck.price, img: deck.img, description: deck.description,  type: deck.type}, deck.id)}>Details</button> */}
-        {/* <button onClick={() => this.addToCart(deck.name, deck.price, deck.img, deck.description, deck.id)}>Add to Cart</button> */}
       </div>
     })
     return (
       <div className='hundred'>
         <h1 className='titlee'>Decks</h1>
-        <input name='searchText' onChange={(e) => this.handleSearch(e)}/>
-        <button onClick={() => this.searchItems(this.state.searchText)}>Search</button>
+        <Link to='/search'><button className='coolButton'>Search</button></Link>
         <div className='felxme'>
         {decks}
         </div>
@@ -79,4 +45,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {setProduct})(Decks);
+export default myHOC(connect(mapStateToProps, {setProduct})(Decks), '/api/decks')

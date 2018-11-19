@@ -24,8 +24,8 @@ class OrderHistory extends Component {
     }
 
     logout = () => {
+        this.props.updateShow(false)
         axios.post('/api/logout').then(() => {
-          this.props.updateShow(false)
           this.props.updateUser(null)
           alert('Logged Out');
           this.props.history.push('/')
@@ -36,7 +36,7 @@ class OrderHistory extends Component {
   render() {
     return (
       <div className='order'>
-          {this.state.history.length !== 0 || this.props.show === true
+          {this.state.history.length !== 0 && this.props.show === true
           ? <div className='prof'>
             <h1>{this.props.user.user.profile_name}</h1>
             <img src={this.props.user.user.picture} className='profPic'/> <br />

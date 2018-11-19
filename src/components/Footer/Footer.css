@@ -1,15 +1,56 @@
 .footer {
-    background: rgb(230, 95, 93);
-    border-top: solid 5px black;
+    background: rgb(97, 168, 170);
+    background: #262626;
+    /* border-top: solid 5px black; */
     /* position: fixed; */
     /* left: 0; */
     /* bottom: 0; */
     margin-top: 70px;
     width: 100%;
-    background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-dark.png");
-    background-image: url("https://www.transparenttextures.com/patterns/cartographer.png");
+    color:white;
+    /* background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-dark.png"); */
+    /* background-image: url("https://www.transparenttextures.com/patterns/cartographer.png"); */
+    /* display: flex;
+    flex-wrap: wrap; */
 }
 
 .footer p {
     margin: 0;
+
+}
+
+.footer button {
+    /* height: 20px;
+    width: 50px;
+    margin: 20px; */
+}
+
+.shop2 {
+    color: white;
+    font-size: 10px;
+}
+.shop3 {
+    color: white;
+    font-size: 10px;
+}
+.shop4 {
+    padding-top: 10px;
+    color: white;
+    font-size: 10px;
+}
+
+.created {
+    color: white;
+    font-size: 10px;
+}
+
+.coolButton {
+    background: #262626;
+    color: white;
+    /* border: 2px solid rgb(230, 95, 93); */
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    width: 90px;
+    height: 30px;
 }
