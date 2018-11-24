@@ -37,8 +37,19 @@
     /* position: fixed; */
     border-top: .1px black solid;
     width: 100%;
-    height: 100vh;
     /* height: 100vh; */
-    background-image: url('https://us.123rf.com/450wm/krugli/krugli1608/krugli160800073/61420963-sea-surfing-pattern-with-different-type-surf-desks-surfboard-seamless-background-in-retro-colors-sum.jpg?ver=6');
-    /* position: fixed; */
+    /* background-image: url('https://us.123rf.com/450wm/krugli/krugli1608/krugli160800073/61420963-sea-surfing-pattern-with-different-type-surf-desks-surfboard-seamless-background-in-retro-colors-sum.jpg?ver=6'); */
+}
+
+body {
+    height: 100%;
+    background-image: url('../../media//chad.png');
+}
+
+nav a button {
+    font-size: 17px;
+}
+
+html {
+    height: 100%vh;
 }

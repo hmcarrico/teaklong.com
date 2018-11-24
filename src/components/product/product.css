@@ -4,11 +4,10 @@
 }
 
 .prod-one {
-    width: 300px;
     /* height: 500px; */
     padding: 0px;
 
-    background: white;
+    background: none;
     color: #262626;
 
 

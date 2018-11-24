@@ -31,9 +31,13 @@ class Completes extends Component {
     return (
       <div className='hundred'>
         <h1 className='titlee'>Completes</h1>
+        <div className='felxcol' >
+        <div>
         <Link to='/search'><button className='coolButton'>Search</button></Link>
+        </div>
         <div className='felxme'>
         {completes}
+        </div>
         </div>
       </div>
     )

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux';
 import {updateUser, updateShow} from '../../ducks/reducer';
 import './Nav.css';
@@ -43,6 +44,7 @@ class Nav1 extends Component {
   render() {
     const {user, show} = this.props;
     return (
+      <div className='tomato2'>
       <div className='tomato'>
         <nav>
         <Link to='/'><button>Home</button></Link>
@@ -51,15 +53,22 @@ class Nav1 extends Component {
         {show === false ?
         <button onClick={() => this.login()}>Log in</button>
         : ''
-        // <button onClick={this.logout}>Log Out</button>
         }
         {show &&
         <div className='navProfile'>
-          {/* Welcome, {user.user.profile_name} {'     '} */}
           <Link to='/orders'><img src={user.user.picture}/></Link>
         </div>
         }
+        {console.log(this.props.location.pathname)}
         </nav>
+        
+        
+      </div>
+      <div className={this.props.location.pathname !== '/' ? 'deskNav' : 'none'}>
+      <Link to='/products/completes' ><button onClick={this.toggle}>Completes</button></Link>
+      <Link to='/products/decks' ><button onClick={this.toggle}>Decks</button></Link>
+      <Link to='/products/wheels' ><button onClick={this.toggle}>Wheels</button></Link>
+      </div>
       </div>
     )
   }
@@ -73,4 +82,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, {updateUser, updateShow})(Nav1);
+export default withRouter(connect(mapStateToProps, {updateUser, updateShow})(Nav1));

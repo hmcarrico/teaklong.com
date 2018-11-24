@@ -24,9 +24,10 @@
 }
 
 .foot {
-  position: fixed;
-  left: 0;
+  /* position: fixed; */
+  position: absolute;
   bottom: 0;
+  width: 100%;
 }
 
 label {
@@ -67,4 +68,157 @@ textarea#message.form-control{
   color: white;
   padding: 40px;
   font-size: 30px;
+}
+
+.skate {
+  display: none;
+}
+
+.deskNav {
+  display: none;
+}
+
+.tomato nav button {
+  font-size: 15px;
+}
+
+@media screen and (min-width: 820px){
+  .footer {
+    margin: 0;
+    position: absolute;
+    bottom: 0;
+  }
+  .footText {
+    display: flex;
+  }
+  .skate {
+    max-width: 300px;
+    max-height: 300px;
+  }
+
+  .felxme {
+    background: none;
+  }
+.menu-back {
+  display: none;
+  }
+  .deskNav {
+    display: flex;
+    justify-content: center;
+    border-top: 5px solid white;
+  }
+
+  .titlee {
+    margin-top: 10px;
+  }
+
+  .prod {
+    margin-bottom: 15px;
+    border: solid rgb(230, 95, 93) 10px;
+}
+
+  .felxme {
+    /* border-top: 5px solid #262626; */
+    /* border-bottom: 5px solid #262626; */
+    margin-top: 10px;
+    width: 80%vw;
+    height: 100%vh;
+  }
+
+  .deskNav p {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .deskNav a button {
+    width: 130px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.788);
+    background: none;
+    text-decoration: none;
+    font-size: 17px;
+    border: 3px solid rgb(230, 95, 93);
+    border-radius: 7px;
+    padding: 5px;
+    margin: 20px 15px 15px 15px;
+  }
+
+  .deskNav a button:hover {
+    color: rgb(255, 255, 255);
+  }
+
+  .tomato2 {
+    background: #262626;
+    margin-top: 50px;
+  }
+
+  .felxme1 {
+    margin-top: 0;
+  }
+
+  .tomato nav button {
+    font-size: 22px;
+  }
+
+
+.full-one {
+  display: flex;
+  flex-direction: column;
+}
+
+.half-one {
+  padding-bottom: 50px;
+}
+
+.half-life {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  padding-bottom: 50px;
+
+}
+
+.desc {
+  max-width: 40vw;
+  max-height: 40vh;
+  margin-top: 70px;
+}
+
+.prodImg {
+  max-height: 300px;
+  max-width: 300px;
+  border: 8px solid #262626;
+  border-radius: 10px;
+  background: white;
+  margin-right: 60px;
+}
+
+.shop4 {
+  background: none;
+  margin-right: 15px;
+  padding: 5px;
+  width: 60px;
+  margin: 15px auto 0px auto;
+}
+
+.shop3 {
+  background: none;
+  margin-right: 15px;
+  padding: 5px;
+  width: 60px;
+  margin: 0 auto;
+}
+
+.shop2 {
+  background: none;  
+  padding: 5px;
+  width: 60px;
+  margin: 0 auto;
+}
+
+.created  {
+  margin: 0 auto;
+}
 }

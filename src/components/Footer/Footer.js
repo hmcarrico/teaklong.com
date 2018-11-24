@@ -11,18 +11,22 @@ class Footer extends Component {
             this.props.show === true &&
             this.props.user.user.admin === true
             ?
-            <div>
+            <div className='footText'>
                 Admin: {this.props.user.user.profile_name} <br />
                 <Link to='/admin/add'><button className='shop4'>Add Product</button></Link>
                 <Link to='/contact'><button className='shop3'>Contact</button></Link>
                 <Link to='/boarding-weather-conditions'><button className='shop2'>Weather Conditions for Boarding</button></Link> <br />
-                <p className='created'>Created by Hunter Carrico☯</p>
+                <div className='created'>
+                    <p>Created by Hunter Carrico☯</p>
+                </div>
             </div>
             :
-            <div>
+            <div className='footText'>
                 <Link to='/contact'><div className='shop4'>Contact</div></Link> <br />
                 <Link to='/boarding-weather-conditions'><div className='shop2'>Weather Conditions for Boarding</div></Link> <br />
-                <p className='created'>Created by Hunter Carrico☯</p>                
+                <div className='created'>
+                    <p>Created by Hunter Carrico☯</p>      
+                </div>          
             </div>
         }
 

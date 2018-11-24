@@ -64,14 +64,28 @@ class Product extends Component {
       <div className='felxme1'>
         <div className='prod-one'>
         {this.state.items.map(item => {
-          return <div>
-          <button className='left' onClick={() => this.props.history.push(`/products/${item.type}s`)}>Back</button> <br />
-          <h1>{item.name}</h1> <br />
-          <b>Price:</b> {item.price} <br />
-            <img className='prodImg' src={item.img} />
-          <br />
-          <p className='desc'><b>Description:</b> {item.description} </p> <br />
-          <button onClick={() => this.addToCart(item.name, item.price, item.img, item.description, item.id)}>Add to Cart</button>
+          return <div >
+          <div className='full-one'>
+              <div className='half-one'>
+                <button className='left' onClick={() => this.props.history.push(`/products/${item.type}s`)}>Back</button> <br />
+                <h1>{item.name}</h1> <br />
+                <b>Price:</b> {item.price} <br />
+              </div>
+
+              <div className='half-life'>
+
+                <div>
+                  <img className='prodImg' src={item.img} />
+                </div>
+
+                <div>
+                  <p className='desc'><b>Description:</b> {item.description} </p> <br />
+                </div>
+              </div>
+              <div>
+                  <button onClick={() => this.addToCart(item.name, item.price, item.img, item.description, item.id)}>Add to Cart</button>
+                </div>
+          </div>
           {
             this.props.show === true &&
             this.props.user.user.admin === true

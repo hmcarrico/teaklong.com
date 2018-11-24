@@ -16,7 +16,8 @@
 
 .footer p {
     margin: 0;
-
+    position: absolute;
+    bottom: 0;
 }
 
 .footer button {
@@ -42,6 +43,7 @@
 .created {
     color: white;
     font-size: 10px;
+    margin: 0 auto;
 }
 
 .coolButton {

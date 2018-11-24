@@ -22,8 +22,11 @@ class Completes extends Component {
     return (
       <div className='hundred'>
         <h1 className='titlee'>All Products</h1>
-        <div className='felxme'>
+        <div className='felxcol'>
+        <div>
         <Link to='/search'><button className='coolButton'>Search</button></Link>
+        </div>
+        <div  className='felxme'>
         {
           this.props.data !== null
           ?
@@ -34,8 +37,9 @@ class Completes extends Component {
               <p>${board.price}</p>
             </div>
           })
-        : <div></div>
+          : <div></div>
         }
+        </div>
         </div>
       </div>
     )

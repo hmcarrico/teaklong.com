@@ -42,7 +42,7 @@ module.exports = {
                 const newUser = newUsers[0];
                 req.session.user = newUser;
                 res.redirect('/products/all');
-                req.session.cart = ['Hello'];
+                req.session.cart = [];
               }).catch(error => {
                 console.log('error inserting user into database', error);
                 res.status(500).json({ message: 'Error on server, sorry bro' });

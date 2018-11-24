@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import Footer from '../Footer/Footer';
 import {Link} from 'react-router-dom';
-import Modal from 'react-responsive-modal';
+import {withRouter} from 'react-router-dom';
+import VectorSkate from '../../media/vec1.jpg'
 import './Home.css'
 
 class Home extends Component {
     constructor(){
         super();
         this.state = {
-          open: false
+          open: false,
         }
     }
 
@@ -20,10 +21,13 @@ class Home extends Component {
         Long
         Boards</p>  
         <Link to='/products/all'><button className='shop'>Shop Now</button></Link><br />
-        <Footer className='foot' />
+        <div ></div>
+        <img className='skate' src={VectorSkate} />
+        {console.log(this.props.location.pathname)}
+      <Footer className='foot' />
       </div>
     )
   }
 }
 
-export default Home;
+export default withRouter(Home);

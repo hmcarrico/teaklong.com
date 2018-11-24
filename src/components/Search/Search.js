@@ -33,11 +33,13 @@ class Search extends Component {
   render() {
     return (
       <div className='hundred'>
+        <div>
         <h1 className='titlee'>Search</h1>
-        <div className='felxme'>
-        {console.log(this.state.completes.length)}
         <input name='searchText' onChange={(e) => this.handleSearch(e)}/>
         <button onClick={() => this.searchItems(this.state.searchText)}>Search</button>
+        </div>
+        <div className='felxme'>
+        {console.log(this.state.completes.length)}
         {
              this.state.completes.length > 0
           ?
