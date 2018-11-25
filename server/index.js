@@ -102,6 +102,7 @@ massive(process.env.CONNECTION_STRING).then(database => {
 app.get('/api/completes', productController.getCompletes);
 app.get('/api/decks', productController.getDecks);
 app.get('/api/wheels', productController.getWheels);
+app.get('/api/trucks', productController.getTrucks);
 app.get('/api/all', productController.getAll);
 app.get('/api/one/:id', productController.getOne);
 app.get('/api/search/:search', productController.search)

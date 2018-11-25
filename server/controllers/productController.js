@@ -17,6 +17,12 @@ module.exports = {
             res.status(200).json(wheels)
         })
     },
+    getTrucks: (req, res) => {
+        const db = req.app.get('db');
+        db.get_trucks().then(trucks => {
+            res.status(200).json(trucks)
+        })
+    },
     getAll: (req, res) => {
         const db = req.app.get('db');
         db.get_all().then(completes => {

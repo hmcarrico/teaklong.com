@@ -79,7 +79,7 @@ class Product extends Component {
                 </div>
 
                 <div>
-                  <p className='desc'><b>Description:</b> {item.description} </p> <br />
+                  <p className='desc'>{item.description} </p> <br />
                 </div>
               </div>
               <div>

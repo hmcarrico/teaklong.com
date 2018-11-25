@@ -36,6 +36,15 @@
     color: white;
 }
 
+.cart-icon {
+    max-height: 30px;
+    max-width: 30px;
+    margin-top: 10px;
+    background: white;
+    padding: 6px;
+    border-radius: 3px;
+}
+
 nav{
     width: 100%;
     display: flex;

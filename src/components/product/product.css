@@ -37,23 +37,22 @@
     width: 120px;
     height: 10px;
 }
-.felxme button {
-    background: #262626;
-    color: white;
-    /* border: 2px solid rgb(230, 95, 93); */
-    border: none;
-    border-radius: 5px;
-    padding: 5px;
-    width: 90px;
-    height: 30px;
-}
 .felxme1 button {
     background: #262626;
     color: white;
     /* border: 2px solid rgb(230, 95, 93); */
     border: none;
+    margin-bottom: 65px;
     border-radius: 5px;
     padding: 5px;
     width: 90px;
     height: 30px;
+}
+
+button.left {
+    margin-bottom: 0;
+}
+
+button.coolButton {
+    margin-bottom: 15px;
 }

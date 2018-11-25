@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {setProduct} from '../../ducks/reducer'
+import Footer from '../Footer/Footer';
 import {Link} from 'react-router-dom';
 import myHOC from '../HOC/myHOC'
 import './AllProducts.css';
@@ -20,6 +21,7 @@ class Completes extends Component {
 
   render() {
     return (
+      <div>
       <div className='hundred'>
         <h1 className='titlee'>All Products</h1>
         <div className='felxcol'>
@@ -39,6 +41,7 @@ class Completes extends Component {
           })
           : <div></div>
         }
+        </div>
         </div>
         </div>
       </div>

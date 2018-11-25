@@ -14,6 +14,22 @@
   /* transform: scale(1.1); */
 }
 
+.created p  {
+  display: none;
+}
+
+.skate-gif {
+  padding-top: 20px;
+  max-height: 175px;
+  max-width: 200px;
+  border-radius: 20px;
+  padding-left: 40px;
+}
+
+.gif-back {
+  display: none;
+}
+
 *{
   text-align: center;
 }
@@ -90,6 +106,14 @@ textarea#message.form-control{
   }
   .footText {
     display: flex;
+    background: rgb(26, 27, 28);
+  }
+  .footTextwo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgb(26, 27, 28);
+    padding-left: 35%;
   }
   .skate {
     max-width: 300px;
@@ -104,8 +128,14 @@ textarea#message.form-control{
   }
   .deskNav {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     border-top: 5px solid white;
+  }
+
+  .desk-nav-sections {
+    display: flex;
+    justify-content: center;
   }
 
   .titlee {
@@ -201,6 +231,7 @@ textarea#message.form-control{
   padding: 5px;
   width: 60px;
   margin: 15px auto 0px auto;
+  border: none;
 }
 
 .shop3 {
@@ -208,6 +239,7 @@ textarea#message.form-control{
   margin-right: 15px;
   padding: 5px;
   width: 60px;
+  border: none;
   margin: 0 auto;
 }
 
@@ -216,9 +248,56 @@ textarea#message.form-control{
   padding: 5px;
   width: 60px;
   margin: 0 auto;
+  border: none;
 }
 
-.created  {
-  margin: 0 auto;
+  .created  {
+    margin: 0 auto;
+  }
+
+  .created p  {
+    display: initial;
+    position: fixed;
+    bottom: 16px;
+    right: 5px;
+  }
+
+  .gif-back {
+    display: flex;
+    margin-top: 40px;
+    background: rgb(26, 27, 28);
+    /* width: 100%; */
+    border-bottom: white 16px solid;
+    border-top: white 16px solid;
+  }
+
+  .felxme1 {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px 60px;
+    margin: 0px auto 0 auto;
+    justify-content: center;
+    background: rgb(255, 255, 255);
+    max-width: 1000px;
+    border-right: 10px solid #262626;
+    border-left: 10px solid #262626;
+}
+
+.full-one div button {
+  margin: 10px auto;
+}
+
+.btn-primary{
+  padding: 0;
+  width: 100px;
+  height: 30px;
+  font-size: 22px;
+  margin: 10px auto;
+  background: none;
+  border: none;
+}
+
+.mail {
+  max-width: 500px;
 }
 }

@@ -26,19 +26,6 @@
     margin: 20px; */
 }
 
-.shop2 {
-    color: white;
-    font-size: 10px;
-}
-.shop3 {
-    color: white;
-    font-size: 10px;
-}
-.shop4 {
-    padding-top: 10px;
-    color: white;
-    font-size: 10px;
-}
 
 .created {
     color: white;
@@ -55,4 +42,25 @@
     padding: 5px;
     width: 90px;
     height: 30px;
+}
+
+.shop2 {
+    color: white;
+    font-size: 10px;
+    background: none;
+    border: none;
+}
+
+.shop3 {
+    color: white;
+    font-size: 10px;
+    border: none;
+    background: none;
+}
+.shop4 {
+    padding-top: 15px;
+    color: white;
+    font-size: 10px;
+    background: none;
+    border: none;
 }
