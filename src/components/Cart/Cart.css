@@ -17,3 +17,8 @@ margin-top: 50px;
     border: solid white 10px;
     color: white;
 }
+
+.cart-flex {
+    display: flex;
+    flex-wrap: wrap;
+}

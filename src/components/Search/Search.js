@@ -19,9 +19,12 @@ class Search extends Component {
     }
 
     searchItems = (item) => {
+      this.state.searchText
+      ?
       axios.get(`/api/search/${item}`).then(res => {
         this.setState({completes: res.data})
       })
+      : alert('search is empty')
     }
 
     handleSearch = (e) => {
@@ -34,14 +37,15 @@ class Search extends Component {
     return (
       <div className='hundred'>
         <div>
-        <h1 className='titlee'>Search</h1>
-        <input name='searchText' onChange={(e) => this.handleSearch(e)}/>
-        <button onClick={() => this.searchItems(this.state.searchText)}>Search</button>
+          <h1 className='titlee'>Search</h1>
+          <input name='searchText' onChange={(e) => this.handleSearch(e)}/>
+          <button onClick={() => this.searchItems(this.state.searchText)}>Search</button>
         </div>
         <div className='felxme'>
         {console.log(this.state.completes.length)}
+        {console.log(this.state.completes)}
         {
-             this.state.completes.length > 0
+          this.state.completes.length > 0
           ?
           this.state.completes.map(board => {
             return <div className='prod' onClick={() => this.changePage({name: board.name, price: board.price, img: board.img, description: board.description, type: board.type, id: board.id}, board.id, board.type)}>

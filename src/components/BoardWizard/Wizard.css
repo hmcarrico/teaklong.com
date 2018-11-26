@@ -1,0 +1,21 @@
+.build-icons {
+    max-height: 100px;
+    max-width: 100px;
+}
+
+.build-icons-active {
+    max-height: 100px;
+    max-width: 100px;
+    background: rgba(230, 95, 93, 0.808);
+    border-radius: 20px;
+    border: 4px solid #262626;
+}
+
+.icon-div {
+    padding-top: 60px;
+}
+
+.wizard-flex {
+    display: flex;
+    flex-wrap: wrap;
+}

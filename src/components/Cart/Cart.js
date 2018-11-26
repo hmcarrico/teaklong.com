@@ -80,7 +80,7 @@ class Cart extends Component {
         <h1 className='cart-title'>Cart</h1>
         { this.state.cart.length !== 0
         ?
-        <div>
+        <div className='cart-flex'>
           {this.state.cart.map(item => {
           return <div className='prod-cart'>
             <h5>{item.name}</h5>
@@ -98,12 +98,10 @@ class Cart extends Component {
         }
 
         { this.props.show === false
-        ? <div>
-        <p className='info'>Please login in to add items to your cart</p>
-        </div>
-        : <div>
-          
-        </div>
+          ? <div>
+            <p className='info'>Please login in to add items to your cart</p>
+          </div>
+        : <div></div>
         }
         {
           this.props.show

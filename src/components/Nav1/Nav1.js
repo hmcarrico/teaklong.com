@@ -4,7 +4,6 @@ import axios from 'axios';
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux';
 import {updateUser, updateShow} from '../../ducks/reducer';
-import CartIcon from '../../media/cart_icon.png';
 import './Nav.css';
 
 class Nav1 extends Component {
@@ -67,13 +66,13 @@ class Nav1 extends Component {
       </div>
         <div className={this.props.location.pathname !== '/' ? 'deskNav' : 'none'}>
         <div>
-          <Link to='/products/completes' ><button onClick={this.toggle}>Build A Board</button></Link> 
+          <Link to='/choose/deck'><button onClick={this.toggle}>Build A Board</button></Link> 
         </div>
         <div className='desk-nav-sections'>
           <Link to='/products/completes' ><button onClick={this.toggle}>Completes</button></Link>
           <Link to='/products/decks' ><button onClick={this.toggle}>Decks</button></Link>
           <Link to='/products/wheels' ><button onClick={this.toggle}>Wheels</button></Link>
-          <Link to='/products/wheels' ><button onClick={this.toggle}>Trucks</button></Link>
+          <Link to='/products/trucks' ><button onClick={this.toggle}>Trucks</button></Link>
         </div>
       </div>
       </div>

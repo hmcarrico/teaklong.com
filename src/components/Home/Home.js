@@ -33,7 +33,6 @@ class Home extends Component {
           <img className='skate-gif' src={jif} />
           <img className='skate-gif' src={jif} />
         </div>
-        {console.log(this.props.location.pathname)}
       <Footer className='foot' />
       </div>
     )
