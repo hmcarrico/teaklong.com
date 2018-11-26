@@ -15,5 +15,4 @@ export default <Switch>
     <Route path='/products/trucks' component={Trucks} />
     <Route path='/products/all' component={All} />
     <Route path='/products/:type/item/:id' component={Product} />
-    {/* <Route path='/admin/add' component={Add} /> */}
 </Switch>

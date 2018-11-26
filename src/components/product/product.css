@@ -4,27 +4,15 @@
 }
 
 .prod-one {
-    /* height: 500px; */
     padding: 0px;
-
     background: none;
     color: #262626;
-
-
     text-align: center;
-    /* background: #262626; */
-    /* color: white; */
-
-
-
-    /* padding-bottom: 40px; */
 }
 
 .desc{
     color: white;
-    /* background: rgb(151, 149, 149); */
     background: #262626;
-    /* border: solid 2px rgb(230, 95, 93); */
     padding: 15px;
     border-radius: 16px;
 }
@@ -40,7 +28,6 @@
 .felxme1 button {
     background: #262626;
     color: white;
-    /* border: 2px solid rgb(230, 95, 93); */
     border: none;
     margin-bottom: 65px;
     border-radius: 5px;

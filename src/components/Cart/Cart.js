@@ -46,11 +46,11 @@ class Cart extends Component {
       {this.state.cart.length !== 0 || this.props.show === true
         ?
       axios.post('/api/stripe', {
-       method: 'POST',
-       body: token,
+      method: 'POST',
+      body: token,
        amount: this.state.count * 100
       })
-       .then(response => {
+      .then(response => {
           if(response.data.success){
             axios.post('/api/order', {shipping_address: token.card.address_line1, user_id: this.props.user.user.id})
             .then(order => {
@@ -91,7 +91,7 @@ class Cart extends Component {
         </div>
         :<div> 
         <p className='info'>Nothing in cart</p>
-       </div>
+      </div>
         }
 
         { this.props.show === false
@@ -110,7 +110,7 @@ class Cart extends Component {
         <div>
           {this.state.cart.length !== 0 && this.props.show === true
           ?
-       <StripeCheckout
+      <StripeCheckout
         token={this.onToken}
         stripeKey="pk_test_rGBc29KX9tUGcuNiWorM9GuZ"
         amount={this.state.count*100}

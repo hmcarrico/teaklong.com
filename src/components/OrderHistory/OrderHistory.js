@@ -27,23 +27,23 @@ class OrderHistory extends Component {
     logout = () => {
         this.props.updateShow(false)
         axios.post('/api/logout').then(() => {
-          this.props.updateUser(null)
-          this.props.alert.show('Logged Out');
-          this.props.history.push('/')
-      })
+            this.props.updateUser(null)
+            this.props.alert.show('Logged Out');
+            this.props.history.push('/')
+        })
     }
 
 
-  render() {
+    render() {
     return (
-      <div className='order'>
-          {this.state.history.length !== 0 && this.props.show === true
-          ? <div className='prof'>
-            <h1>{this.props.user.user.profile_name}</h1>
-            <img src={this.props.user.user.picture} className='profPic'/> <br />
-            <button onClick={this.logout}>Log Out</button>
-            <h3>Order History</h3>
-            <hr/>
+        <div className='order'>
+            {this.state.history.length !== 0 && this.props.show === true
+            ? <div className='prof'>
+                <h1>{this.props.user.user.profile_name}</h1>
+                <img src={this.props.user.user.picture} className='profPic'/> <br />
+                <button onClick={this.logout}>Log Out</button>
+                <h3>Order History</h3>
+                <hr/>
             {this.state.history.map(order => {
                 return <div>
                     <h4>Order ID:</h4><p>{order.order_id}</p>
@@ -51,7 +51,7 @@ class OrderHistory extends Component {
                     <img src={order.img} className='lol' />
                     <hr/>
                     </div>               
-               }
+                }
 
 
             )}
@@ -60,17 +60,16 @@ class OrderHistory extends Component {
             <div>
                 Please Login to view your order history
             </div>
-          }
-      </div>
-    )
-  }
+        }
+    </div>
+    )}
 }
 
 const mapStateToProps = (state) => {
     return {
-      user : state.user,
-      show : state.show
+        user : state.user,
+        show : state.show
     }
-  }
+}
 
 export default withAlert(connect(mapStateToProps, {updateShow, updateUser})(OrderHistory));

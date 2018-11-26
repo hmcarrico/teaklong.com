@@ -4,9 +4,9 @@ import {Link} from 'react-router-dom';
 import './Footer.css'
 
 class Footer extends Component {
-  render() {
+render() {
     return (
-      <div className='footer'>
+        <div className='footer'>
         {
             this.props.show === true &&
             this.props.user.user.admin === true
@@ -38,9 +38,8 @@ class Footer extends Component {
             </div>
         }
 
-      </div>
-    )
-  }
+    </div>
+    )}
 }
 
 const mapStateToProps = (state) => {

@@ -139,7 +139,7 @@ app.post('/session/cart', (req, res) => {
 app.delete('/session/cart/:id', (req, res) => {
     let {id} = req.params;
         let newCart = req.session.cart.findIndex(item => {
-           return +id === item.id
+          return +id === item.id
         })
         if(newCart === -1){
             res.status(404).send(`Item with id ${id} does now exist`)

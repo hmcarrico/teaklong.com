@@ -1,29 +1,15 @@
 .footer {
     background: rgb(97, 168, 170);
     background: #262626;
-    /* border-top: solid 5px black; */
-    /* position: fixed; */
-    /* left: 0; */
-    /* bottom: 0; */
     margin-top: 70px;
     width: 100%;
     color:white;
-    /* background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-dark.png"); */
-    /* background-image: url("https://www.transparenttextures.com/patterns/cartographer.png"); */
-    /* display: flex;
-    flex-wrap: wrap; */
 }
 
 .footer p {
     margin: 0;
     position: absolute;
     bottom: 0;
-}
-
-.footer button {
-    /* height: 20px;
-    width: 50px;
-    margin: 20px; */
 }
 
 
@@ -36,7 +22,6 @@
 .coolButton {
     background: #262626;
     color: white;
-    /* border: 2px solid rgb(230, 95, 93); */
     border: none;
     border-radius: 5px;
     padding: 5px;

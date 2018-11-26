@@ -80,10 +80,9 @@ class AddProduct extends Component {
             <div>
                 404 ERROR: PAGE DOES NOT EXISTS
             </div>
-          }
-      </div>
-    )
-  }
+        }
+    </div>
+    )}
 }
 
 const mapStateToProps = (state) => {
