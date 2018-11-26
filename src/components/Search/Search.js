@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import {setProduct} from '../../ducks/reducer'
+import { withAlert } from 'react-alert'
 import './Search.css';
 
 class Search extends Component {
@@ -24,7 +25,7 @@ class Search extends Component {
       axios.get(`/api/search/${item}`).then(res => {
         this.setState({completes: res.data})
       })
-      : alert('search is empty')
+      : this.props.alert.show('search is empty')
     }
 
     handleSearch = (e) => {
@@ -78,4 +79,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {setProduct})(Search)
+export default withAlert(connect(mapStateToProps, {setProduct})(Search));

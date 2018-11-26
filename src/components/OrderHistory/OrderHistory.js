@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
 import {updateShow, updateUser} from '../../ducks/reducer';
+import { withAlert } from 'react-alert'
 import './OrderHistory.css';
 
 class OrderHistory extends Component {
@@ -27,7 +28,7 @@ class OrderHistory extends Component {
         this.props.updateShow(false)
         axios.post('/api/logout').then(() => {
           this.props.updateUser(null)
-          alert('Logged Out');
+          this.props.alert.show('Logged Out');
           this.props.history.push('/')
       })
     }
@@ -72,4 +73,4 @@ const mapStateToProps = (state) => {
     }
   }
 
-export default connect(mapStateToProps, {updateShow, updateUser})(OrderHistory);
+export default withAlert(connect(mapStateToProps, {updateShow, updateUser})(OrderHistory));

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import StripeCheckout from 'react-stripe-checkout';
+import { withAlert } from 'react-alert'
 import './Cart.css'
 
 
@@ -62,14 +63,14 @@ class Cart extends Component {
                   console.log('super success!', line)
                   if(i === this.state.cart.length-1){
                     this.setState({cart: [], count: 0})
-                    alert(`Thank you for your purchase ${token.card.name}`)
+                    this.props.alert.show(`Thank you for your purchase ${token.card.name}`)
                   }
                 })
               })
             })
           }
         })
-        : alert('Please make sure you are logged in and cart is not empty')
+        : this.props.alert.show('Please make sure you are logged in and cart is not empty')
       }
     }
 
@@ -134,4 +135,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Cart);
+export default withAlert(connect(mapStateToProps)(Cart));

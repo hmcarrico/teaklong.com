@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {setProduct} from '../../ducks/reducer'
-import Footer from '../Footer/Footer';
 import {Link} from 'react-router-dom';
 import myHOC from '../HOC/myHOC'
 import './AllProducts.css';

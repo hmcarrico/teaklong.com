@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withAlert } from 'react-alert'
 import axios from 'axios';
 
 class Nodemailer extends Component {
@@ -10,23 +11,23 @@ class Nodemailer extends Component {
     }
 
     handleSubmit = (e) => {
-      e.preventDefault();
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const message = document.getElementById('message').value;
-      axios.post('/send', {
-              name: name,   
-              email: email,  
-              message: message
-      }).then((response)=>{
-          if (response.data.msg === 'success'){
-              alert("Message Sent."); 
-              this.resetForm()
-          }else if(response.data.msg === 'fail'){
-              alert("Message failed to send.")
-          }
-      })
-  }
+        e.preventDefault();
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+        axios.post('/send', {
+            name: name,   
+            email: email,  
+            message: message
+        }).then((response)=>{
+            if (response.data.msg === 'success'){
+            this.props.alert.show("Message Sent."); 
+                this.resetForm()
+            }else if(response.data.msg === 'fail'){
+            this.props.alert.show("Message failed to send.")
+            }
+        })
+    }
 
   resetForm = () => {
     document.getElementById('contact-form').reset();
@@ -56,4 +57,4 @@ class Nodemailer extends Component {
   }
 }
 
-export default Nodemailer;
+export default withAlert(Nodemailer);

@@ -4,6 +4,7 @@ import axios from 'axios';
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux';
 import {updateUser, updateShow} from '../../ducks/reducer';
+import { withAlert } from 'react-alert'
 import './Nav.css';
 
 class Nav1 extends Component {
@@ -37,7 +38,7 @@ class Nav1 extends Component {
     axios.post('/api/logout').then(() => {
       this.props.updateShow(false)
       this.props.updateUser(null)
-      alert('Logged Out')
+      this.props.alert.show('Logged Out')
   })
 }
 
@@ -88,4 +89,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default withRouter(connect(mapStateToProps, {updateUser, updateShow})(Nav1));
+export default withAlert(withRouter(connect(mapStateToProps, {updateUser, updateShow})(Nav1)));

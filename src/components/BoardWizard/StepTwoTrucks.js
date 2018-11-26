@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import myHOC from '../HOC/myHOC';
 import {connect} from 'react-redux';
+import { withAlert } from 'react-alert'
 import DeckIcon from '../../media/deckIcon.png';
 import TruckIcon from '../../media/truckIcon.png';
 import WheelIcon from '../../media/wheelIcon.png';
@@ -15,7 +16,7 @@ class StepTwoTrucks extends Component {
       axios.post('/session/cart', {name: name, price: price, img: img, description: description, id: id}).then(cart => {
         this.props.history.push('/choose/wheels')
     })
-    : alert('please log in to create a board')
+    : this.props.alert.show('please log in to create a board')
   }
 }
 
@@ -50,4 +51,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default myHOC(connect(mapStateToProps)(StepTwoTrucks), '/api/trucks');
+export default withAlert(myHOC(connect(mapStateToProps)(StepTwoTrucks), '/api/trucks'));

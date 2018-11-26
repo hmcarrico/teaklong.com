@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
 import './product.css';
+import { withAlert } from 'react-alert'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from 'react-responsive-carousel';
 
 class Product extends Component {
   constructor(props) {
     super()
     this.state = {
-       items: [],
-       price: ''
+      items: [],
+      price: ''
     }
   }
 
@@ -30,15 +30,15 @@ class Product extends Component {
     { this.props.show === true
       ?
       axios.post('/session/cart', {name: name, price: price, img: img, description: description, id: id}).then(cart => {
-      alert(`${name} added to cart`)
+        this.props.alert.show(`${name} added to cart`)
     })
-    : alert('please log in to add to cart')
+    : this.props.alert.show('please log in to add to cart')
     } 
   }
 
   deleteItem = (id) => {
     axios.delete(`/api/delete/${id}`).then(res => {
-      alert('Item has been deleted');
+      this.props.alert.show('Item has been deleted');
       {this.props.history.push(`/products/all`)}
     })
   }
@@ -51,7 +51,7 @@ class Product extends Component {
 
   editPrice = (price, id) => {
     axios.put(`/api/edit/${id}`, {price}).then(res => {
-      alert('Price Edited')
+      this.props.alert.show('Price Edited')
       {this.getProduct()}
       this.setState({
         price: ''
@@ -114,4 +114,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Product);
+export default withAlert(connect(mapStateToProps)(Product));

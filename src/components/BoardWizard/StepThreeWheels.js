@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import DeckIcon from '../../media/deckIcon.png';
 import TruckIcon from '../../media/truckIcon.png';
 import WheelIcon from '../../media/wheelIcon.png';
+import { withAlert } from 'react-alert'
 import './Wizard.css'
 
 class StepThreeWheels extends Component {
@@ -15,7 +16,7 @@ class StepThreeWheels extends Component {
       axios.post('/session/cart', {name: name, price: price, img: img, description: description, id: id}).then(cart => {
         this.props.history.push('/cart')
     })
-    : alert('please log in to create a board')
+    : this.props.alert.show('please log in to create a board')
   }
 }
 
@@ -50,4 +51,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default myHOC(connect(mapStateToProps)(StepThreeWheels), '/api/wheels');
+export default withAlert(myHOC(connect(mapStateToProps)(StepThreeWheels), '/api/wheels'));

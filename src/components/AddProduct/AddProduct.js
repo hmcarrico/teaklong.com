@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
+import { withAlert } from 'react-alert'
 import './AddProduct.css'
 
 class AddProduct extends Component {
@@ -28,9 +29,9 @@ class AddProduct extends Component {
         })
     }
 
-    addListing = (type, name, price, image, description) => {
-        axios.post('/api/add', {type, name, price, image, description}).then(res => {
-            alert('Item added, visit the product page to view it')
+    addListing = (type, name, price, img, description) => {
+        axios.post('/api/add', {type, name, price, img, description}).then(res => {
+            this.props.alert.show('Item added, visit the product page to view it')
         })
     }
     uploadWidget = () => {
@@ -52,6 +53,7 @@ class AddProduct extends Component {
     }
 
   render() {
+      {console.log(this.state.image)}
     return (
       <div>
         {
@@ -92,4 +94,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(AddProduct);
+export default withAlert(connect(mapStateToProps)(AddProduct));
