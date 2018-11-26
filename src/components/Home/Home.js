@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Footer from '../Footer/Footer';
 import {Link} from 'react-router-dom';
 import {withRouter} from 'react-router-dom';
-import skate from '../../media/board.png'
 import jif from '../../media/skater-color.gif'
 import './Home.css'
 
