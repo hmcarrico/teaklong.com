@@ -43,8 +43,6 @@ class Search extends Component {
           <button onClick={() => this.searchItems(this.state.searchText)}>Search</button>
         </div>
         <div className='felxme'>
-        {console.log(this.state.completes.length)}
-        {console.log(this.state.completes)}
         {
           this.state.completes.length > 0
           ?

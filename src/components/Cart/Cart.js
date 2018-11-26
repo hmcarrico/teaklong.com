@@ -23,7 +23,6 @@ class Cart extends Component {
     getCart = () => {
       axios.get('/session/cart').then(res => {
         let total = 0;
-        console.log(res.data)
         if(res.data){
         res.data.map(item => {
           return total += item.price
@@ -38,7 +37,6 @@ class Cart extends Component {
 
     deleteItem = (id) => {
       axios.delete(`/session/cart/${id}`).then(res => {
-        console.log('deleted')
         {this.setState({count: 0})};
         {this.getCart()}
       })
@@ -56,11 +54,9 @@ class Cart extends Component {
           if(response.data.success){
             axios.post('/api/order', {shipping_address: token.card.address_line1, user_id: this.props.user.user.id})
             .then(order => {
-              console.log('success!', order);
               this.state.cart.map((item, i) => {
                 axios.post('api/line', {order_id: order.data[0].id, product_id: item.id})
                 .then(line => {
-                  console.log('super success!', line)
                   if(i === this.state.cart.length-1){
                     this.setState({cart: [], count: 0})
                     this.props.alert.show(`Thank you for your purchase ${token.card.name}`)

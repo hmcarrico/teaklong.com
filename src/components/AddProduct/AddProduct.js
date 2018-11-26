@@ -53,7 +53,6 @@ class AddProduct extends Component {
     }
 
   render() {
-      {console.log(this.state.image)}
     return (
       <div>
         {

@@ -60,7 +60,6 @@ class Nav1 extends Component {
           <Link to='/orders'><img src={user.user.picture}/></Link>
         </div>
         }
-        {console.log(this.props.location.pathname)}
         </nav>
         
         
