@@ -60,6 +60,7 @@ class Cart extends Component {
                   if(i === this.state.cart.length-1){
                     this.setState({cart: [], count: 0})
                     this.props.alert.show(`Thank you for your purchase ${token.card.name}`)
+                    this.props.history.push('/orders')
                   }
                 })
               })
