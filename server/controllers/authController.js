@@ -14,7 +14,7 @@ module.exports = {
         console.log(payload)
 
         function tradeCodeForAccessToken() {
-          return axios.post(`https://${process.env.REACT_APP_AUTH0_DOMAIN}/oauth/token`, payload);
+          return axios.post(`http://${process.env.REACT_APP_AUTH0_DOMAIN}/oauth/token`, payload);
         }
         
         function tradeAccessTokenForUserInfo(response) {
