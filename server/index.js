@@ -9,6 +9,8 @@ const orderController = require('./controllers/orderController')
 const path = require('path');
 const stripe = require("stripe")("sk_test_48bsYBhFSRnBOUFnGUpFwpKk");
 require('dotenv').config();
+const axios = require('axios');
+
 
 const app = express();
 app.use(bodyParser.json());
@@ -84,10 +86,8 @@ app.post("/api/stripe", (req, res) => {
             res.send({
             success: true,
             message: 'Success'
-         })
-          }
+        })}
       });
-
   });
 
 
@@ -158,6 +158,13 @@ app.get('/api/history/:id', orderController.orderHistory);
 app.get('*', (req, res)=>{
     res.sendFile(path.join(__dirname, '../build/index.html'));
   })
+
+//   axios
+//   .get(`https://www.zipcodeapi.com/rest/f3wNeXd1clG23gMYGZosDNRDmRC0Rh6hhJJ07QgtIVK9Vr2RPI0HxF0foZPiLy7U/info.json/85034/degrees`)//not my api key"
+// .then(res => {
+//   console.log(res.data)
+
+//   })
 
 const port = process.env.SERVER_PORT || 4444;
 app.listen(port, () => {

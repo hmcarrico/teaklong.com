@@ -26,9 +26,8 @@ return class extends React.Component{
                 this.getData()
             }
         </>
-        )
+        )}
     }
-  }
 }
 
 export default myHOC;

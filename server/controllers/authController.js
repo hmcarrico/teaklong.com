@@ -26,12 +26,13 @@ module.exports = {
           console.log('userData', userData)
       
           return req.app.get('db').find_user_by_auth0_id(userData.sub).then(users => {
+            console.log(users)
             if (users.length) {
               const user = users[0];
               req.session.user = user;
               req.session.cart = [];
               console.log('cart--------->', req.session.cart)
-              res.redirect('/products/all');
+              res.redirect('/');
             } else {
               return req.app.get('db').create_user([
                 userData.sub,
@@ -41,11 +42,11 @@ module.exports = {
               ]).then(newUsers => {
                 const newUser = newUsers[0];
                 req.session.user = newUser;
-                res.redirect('/products/all');
+                res.redirect('/');
                 req.session.cart = [];
               }).catch(error => {
                 console.log('error inserting user into database', error);
-                res.status(500).json({ message: 'Error on server, sorry bro' });
+                res.status(500).json({ message: 'Error on server' });
               });
             }
           }).catch(error => {

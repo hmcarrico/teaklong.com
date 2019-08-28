@@ -72,7 +72,7 @@ class Cart extends Component {
     }
 
   render() {
-    
+
     return (
       <div>
         <h1 className='cart-title'>Cart</h1>

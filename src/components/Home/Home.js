@@ -10,10 +10,29 @@ class Home extends Component {
         super();
         this.state = {
           open: false,
+          images: [jif, jif, jif, jif, jif, jif]
         }
     }
 
+    componentDidMount(){
+      if(window.innerWidth > 1460){
+        let newImages = this.state.images.slice();
+        newImages.push(jif)
+        if(window.innerWidth > 1650){
+          newImages.push(jif)
+        }
+        this.setState({
+          images: newImages
+        })
+      }
+    }
+
   render() {
+    const jifMapped = this.state.images.map(gif => {
+      return <div>
+        <img className='skate-gif' src={gif} />
+      </div>
+    })
     return (
       <div className='backk'>
         <div className='lugo'>
@@ -23,14 +42,9 @@ class Home extends Component {
             Boards</p>  
         </div>
         <Link to='/products/all'><button className='shop'>Shop Now</button></Link><br />
-        <div ></div>
+        <div></div>
         <div className='gif-back'>
-          <img className='skate-gif' src={jif} />
-          <img className='skate-gif' src={jif} />
-          <img className='skate-gif' src={jif} />
-          <img className='skate-gif' src={jif} />
-          <img className='skate-gif' src={jif} />
-          <img className='skate-gif' src={jif} />
+          {jifMapped}
         </div>
       <Footer className='foot' />
       </div>
