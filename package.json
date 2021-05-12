@@ -15,7 +15,7 @@
     "fs": "^0.0.1-security",
     "http-proxy-middleware": "^0.19.0",
     "massive": "^5.5.1",
-    "nodemailer": "^4.6.8",
+    "nodemailer": "^6.4.16",
     "path": "^0.12.7",
     "react": "^16.6.0",
     "react-alert": "^4.0.4",
